@@ -1,6 +1,6 @@
 import { model, Schema, Model, ObjectId } from 'mongoose';
-import { IUser } from '@playdarts/api/users';
 import * as bcrypt from 'bcrypt';
+import { IUser } from '@playdarts/core';
 
 const UserSchema = new Schema<IUser>({
   name: { type: String, required: true },
