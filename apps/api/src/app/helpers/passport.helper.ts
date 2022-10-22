@@ -7,7 +7,6 @@ export class PassportHelper {
       secretOrKey: process.env.SECRET,
       jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt")
     }, (jwt_payload, done) => {
-      console.log(jwt_payload);
       getUserById(jwt_payload.user._id, (err, user) => {
         if (err) return done(err, false);
         if (user) return done(null, user);

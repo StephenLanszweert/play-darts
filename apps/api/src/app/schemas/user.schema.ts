@@ -23,7 +23,6 @@ export const getUserByUsername = (username: string, callback) => {
 export const addUser = (user, callback) => {
   bcrypt.genSalt(10, (err, salt) => {
     bcrypt.hash(user.password, salt, (err, hash) => {
-      console.log(err);
       if (err) throw err;
       user.password = hash;
       user.save(callback);
