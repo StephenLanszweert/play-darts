@@ -1,0 +1,24 @@
+{
+  "name": "ui-kit",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/ui-kit/src",
+  "prefix": "playdarts",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ui-kit"],
+      "options": {
+        "jestConfig": "libs/ui-kit/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["libs/ui-kit/**/*.ts", "libs/ui-kit/**/*.html"]
+      }
+    }
+  },
+  "tags": ["shared"]
+}

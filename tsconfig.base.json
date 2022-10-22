@@ -15,7 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@playdarts/api/users": ["libs/api/users/src/index.ts"]
+      "@playdarts/api/users": ["libs/api/users/src/index.ts"],
+      "@playdarts/dashboard": ["libs/modules/dashboard/src/index.ts"],
+      "@playdarts/ui-kit": ["libs/ui-kit/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
