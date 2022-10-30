@@ -2,6 +2,7 @@ import { Router } from 'express';
 import { User, addUser, getUserByUsername, comparePassword } from '../schemas/user.schema';
 import * as jwt from 'jsonwebtoken';
 import passport = require('passport');
+import moment = require('moment');
 
 export const usersRoutes = Router();
 
@@ -19,7 +20,7 @@ usersRoutes.post('/register', (req, res) => {
   });
 });
 
-usersRoutes.post('/authenticate', (req, res) => {
+usersRoutes.post('/login', (req, res) => {
   const { username, password } = req.body;
 
   getUserByUsername(username, (err, user) => {
@@ -35,7 +36,7 @@ usersRoutes.post('/authenticate', (req, res) => {
 
         res.json({
           success: true,
-          token: `JWT ${token}`,
+          token: `${token}`,
           user: {
             id: user._id,
             name: user.name,

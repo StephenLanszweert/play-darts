@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as fromComponents from './components';
-import { HomeComponent } from './components/home/home.component';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [fromComponents.components, HomeComponent],
-  exports: [fromComponents.components, HomeComponent],
+  imports: [CommonModule, BrowserModule],
+  declarations: [fromComponents.components],
+  exports: [fromComponents.components],
 })
-export class UiKitModule {}
+export class UiKitModule { }

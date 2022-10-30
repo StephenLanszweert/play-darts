@@ -1,1 +1,13 @@
 <p>home works!</p>
+
+<p *ngIf="isAuthenticated$ | async">
+  User logged in
+  <button (click)="logout()">Logout</button>
+</p>
+
+<p>{{ isAuthenticated$ | async }}</p>
+
+<p *ngIf="(isAuthenticated$ | async) === false">
+  <button (click)="login()">Login</button>
+  <button (click)="register()">Register</button>
+</p>
