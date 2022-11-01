@@ -1,0 +1,19 @@
+.app {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 7% 1fr;
+  transition: grid-template-columns 0.5s ease-out;
+  &.sidebar-expanded {
+    grid-template-columns: 15% 1fr;
+  }
+}
+
+@media only screen and (max-width: 850px){
+  .app {
+    grid-template-rows: 1fr 10%;
+    grid-template-columns: 1fr;
+    playdarts-sidebar {
+      order: 2;
+    }
+  }
+}

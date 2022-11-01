@@ -1,0 +1,107 @@
+.sidebar {
+  position: relative;
+  height: 100%;
+  border: 1px solid #EBEBEB;
+  box-shadow: 0px 118.074px 94.4595px rgba(41, 72, 152, 0.05), 0px 76.5297px 55.32px rgba(41, 72, 152, 0.037963), 0px 45.4805px 30.0871px rgba(41, 72, 152, 0.0303704), 0px 23.6149px 15.3497px rgba(41, 72, 152, 0.025), 0px 9.62088px 7.6967px rgba(41, 72, 152, 0.0196296), 0px 2.18656px 3.71716px rgba(41, 72, 152, 0.012037);
+  .logo {
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    margin-top: 2rem;
+  }
+  nav {
+    margin: 0;
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+        a {
+          color: var(--black-color);
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          margin: 2rem 0;
+          font-size: 1.5rem;
+          .sidebaricon {
+            width: 2rem;
+          }
+          &.active {
+            &::before {
+              content: "";
+              position: absolute;
+              left: -0.5rem;
+              font-weight: bold;
+              display: inline-block;
+              transform: scale(3);
+              width: .5rem;
+              height: .5rem;
+              box-shadow: 0px 0 15px 8px #86ADC9;
+              border-radius: 50%;
+              background: #86ADC9;
+              border: none;
+            }
+            .sidebaricon * {
+              fill: var(--black-color);
+            }
+        }
+        }
+      }
+  &.expanded {
+    .expandedicon {
+      font-size: 2rem;
+    }
+    .sidebaricon {
+      margin-right: 1rem;
+    }
+  }
+  .expandedicon {
+    font-size: 1rem;
+    transition: font-size 0.5s ease-out;
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    &:hover {
+      color: var(--purple-color);
+    }
+  }
+}
+
+
+.break {
+  margin-top: 2rem;
+  width: 80%;
+  height: 2px;
+  margin-left: auto;
+  margin-right: auto;
+  background: #EBEBEB;
+  color: #EBEBEB
+}
+
+@media only screen and (max-width: 850px){
+  .logo, .break, .expandedicon {
+    display: none;
+  }
+  .sidebar {
+    overflow-y: hidden;
+    nav {
+      margin-top: 0;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      height: inherit;
+      box-shadow: none;
+      margin-bottom: -1.5rem;
+      a {
+        position: relative;
+        &.active::before {
+          left: 0.7rem;
+          bottom: -1.5rem;
+          box-shadow: 0px 0 18px 8px #86ADC9;
+        }
+      }
+    }
+  }
+}
+

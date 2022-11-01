@@ -1,1 +1,11 @@
-<router-outlet></router-outlet>
+<div class="app" [class.sidebar-expanded]="(sidebarExpanded$ | async) === true">
+  <playdarts-sidebar
+    (onExpanded)="sidebarExpanded$.next($event)"
+    [expanded]="(sidebarExpanded$ | async) === true"
+  ></playdarts-sidebar>
+  <div id="page" class="container container-fluid container-full">
+    <div id="main">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

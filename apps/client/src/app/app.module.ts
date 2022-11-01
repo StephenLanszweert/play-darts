@@ -5,10 +5,11 @@ import { UiKitModule } from '@playdarts/ui-kit';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routing.module';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 
 @NgModule({
-  declarations: [AppComponent, NxWelcomeComponent],
+  declarations: [AppComponent, SidebarComponent],
   imports: [BrowserModule, UiKitModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],

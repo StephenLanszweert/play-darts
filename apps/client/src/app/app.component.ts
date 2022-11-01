@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Component({
   selector: 'playdarts-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'client';
+  sidebarExpanded$ = new BehaviorSubject<boolean>(false);
 }

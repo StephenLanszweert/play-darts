@@ -6,7 +6,12 @@ export const APP_ROUTES: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    component: HomeComponent,
+    redirectTo: '/dashboard',
+  },
+  {
+    path: 'game',
+    pathMatch: 'full',
+    component: HomeComponent
   },
   {
     path: 'dashboard',
