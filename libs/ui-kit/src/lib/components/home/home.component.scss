@@ -1,0 +1,47 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: #F5F8FF;
+  .text {
+    z-index: 10;
+    width: 30rem;
+    position: absolute;
+    top: 15rem;
+    left: 15rem;
+    h1 {
+      font-size: 5rem;
+    }
+    p {
+      font-size: 2rem;
+    }
+    .action-btn {
+      margin-top: 1rem;
+    }
+  }
+  .dartboard {
+    position: absolute;
+    bottom: 5rem;
+  }
+  .background {
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+  }
+  .player {
+    position: absolute;
+    bottom: 5rem;
+    right: 10rem;
+    #Arrow {
+      fill: black;
+      cursor: pointer;
+      transform: translateX(80px) rotateZ(5deg);
+      transition: all 0.5s ease-in;
+      &.hover {
+        transition: all 0.5s ease-out;
+        transform: translateX(-180px) rotateZ(-5deg);
+
+        opacity: 0;
+      }
+    }
+  }
+}

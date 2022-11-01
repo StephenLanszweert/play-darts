@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap');
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+input, button, textarea, select {
+  font: inherit;
+}
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+.action-btn {
+  background: #6265D8;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  &:hover {
+    color: #000;
+    background: transparent;
+    border: 1px solid #6265D8;
+    transition: all 0.5s ease-out;
+  }
+}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IUser } from '@playdarts/core';
 import { AuthService } from 'libs/core/authentication/src';
-import { Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, tap } from 'rxjs';
 
 @Component({
   selector: 'playdarts-home',
@@ -10,6 +10,7 @@ import { Observable, tap } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   public isAuthenticated$: Observable<boolean> | undefined;
+  public btnHovered = new BehaviorSubject<boolean>(false);
 
   constructor(private authService: AuthService) { }
 
