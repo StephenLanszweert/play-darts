@@ -6,7 +6,7 @@
   .logo {
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    width: 50%;
     margin-top: 2rem;
   }
   nav {
@@ -24,7 +24,7 @@
           margin: 2rem 0;
           font-size: 1.5rem;
           .sidebaricon {
-            width: 2rem;
+            width: 1.5rem;
           }
           &.active {
             &::before {
@@ -48,6 +48,10 @@
         }
       }
   &.expanded {
+    a {
+      justify-content: space-between;
+      width: 80%;
+    }
     .expandedicon {
       font-size: 2rem;
     }
@@ -83,7 +87,16 @@
   .logo, .break, .expandedicon {
     display: none;
   }
+  :host {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+    background: var(--gray-color);
+    height: 4rem;
+  }
   .sidebar {
+    height: 100%;
     overflow-y: hidden;
     nav {
       margin-top: 0;

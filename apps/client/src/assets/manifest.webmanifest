@@ -2,13 +2,13 @@
   "name": "Play darts",
   "short_name": "Play darts",
   "theme_color": "#5d5d68",
-  "background_color": "#2196f3",
+  "background_color": "#5D5D68",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
   "icons": [
     {
-      "src": "./logo.svg",
+      "src": "logo.svg",
       "type": "image/png"
     }
   ]
