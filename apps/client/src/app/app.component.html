@@ -1,11 +1,21 @@
-<div class="app" [class.sidebar-expanded]="(sidebarExpanded$ | async) === true">
+<div
+  class="app"
+  [class.darkMode]="(darkModeEnabled$ | async) === true"
+  [class.sidebar-expanded]="(sidebarExpanded$ | async) === true"
+>
   <playdarts-sidebar
     (onExpanded)="sidebarExpanded$.next($event)"
     [expanded]="(sidebarExpanded$ | async) === true"
+    [darkMode]="(darkModeEnabled$ | async) === true"
   ></playdarts-sidebar>
   <div id="page" class="container container-fluid container-full">
     <div id="main">
-      <router-outlet></router-outlet>
+      <playdarts-topbar
+        [darkMode]="(darkModeEnabled$ | async) === true"
+      ></playdarts-topbar>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </div>
 </div>

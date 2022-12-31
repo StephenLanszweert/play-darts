@@ -1,23 +1,52 @@
 .app {
   height: 100vh;
+  width: 100vw;
+  overflow: hidden;
   display: grid;
   grid-template-columns: 5% 1fr;
   transition: grid-template-columns 0.5s ease-out;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--black-color);
+  }
+  .content {
+    height: 90vh;
+    overflow-y: scroll;
+    background: var(--main-bg-color);
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+  }
   &.sidebar-expanded {
     grid-template-columns: 15% 1fr;
+  }
+  &.darkMode {
+    .content {
+      background: var(--dark-black-color);
+    }
   }
 }
 
 #main {
   height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 10% 90%;
 }
 
 @media only screen and (max-width: 850px){
   .app {
-    grid-template-rows: 1fr 10%;
     grid-template-columns: 1fr;
-    #page {
-      padding-bottom: 4rem;
+    ::-webkit-scrollbar-thumb {
+      background: transparent;
+    }
+    .content {
+      padding-bottom: 3rem;
+    }
+    &.sidebar-expanded {
+      grid-template-columns: 1fr;
     }
     playdarts-sidebar {
       order: 2;

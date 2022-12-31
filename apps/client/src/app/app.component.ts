@@ -8,5 +8,6 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class AppComponent {
   title = 'client';
-  sidebarExpanded$ = new BehaviorSubject<boolean>(false);
+  sidebarExpanded$ = new BehaviorSubject<boolean>(true);
+  darkModeEnabled$ = new BehaviorSubject<boolean>(true);
 }

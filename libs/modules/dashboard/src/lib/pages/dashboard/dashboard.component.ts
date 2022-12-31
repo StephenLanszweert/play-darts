@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
@@ -11,6 +11,8 @@ export class DashboardComponent implements OnInit {
   basicData: any;
   basicOptions: any;
   mobile: boolean = false;
+
+  @Input() darkMode = true;
 
   ngOnInit(): void {
     Chart.register(ChartDataLabels);
@@ -35,11 +37,6 @@ export class DashboardComponent implements OnInit {
           family: "'Poppins', sans-serif"
         }
       },
-      // interaction: {
-      //   mode: 'nearest',
-      //   axis: 'x',
-      //   intersect: false
-      // },
       responsive: true,
       plugins: {
         datalabels: {
@@ -67,7 +64,7 @@ export class DashboardComponent implements OnInit {
       scales: {
         x: {
           ticks: {
-            color: '#495057'
+            color: this.darkMode ? '#FFFFFF' : '#495057'
           },
           grid: {
             color: '#ebedef'
@@ -75,7 +72,7 @@ export class DashboardComponent implements OnInit {
         },
         y: {
           ticks: {
-            color: '#495057'
+            color: this.darkMode ? '#FFFFFF' : '#495057'
           },
           grid: {
             color: '#ebedef'
