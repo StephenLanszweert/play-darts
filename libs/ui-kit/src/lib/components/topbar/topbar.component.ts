@@ -11,7 +11,7 @@ import { filter } from 'rxjs';
 export class TopbarComponent implements OnInit {
   isMobile = false;
   title = "";
-  @Input() darkMode = true;
+  darkMode = true;
 
   constructor(private router: Router, private deviceService: DeviceDetectorService) { }
 

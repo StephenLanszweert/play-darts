@@ -22,6 +22,7 @@
         "libs/core/authentication/src/index.ts"
       ],
       "@playdarts/dashboard": ["libs/modules/dashboard/src/index.ts"],
+      "@playdarts/game": ["libs/modules/game/src/index.ts"],
       "@playdarts/ui-kit": ["libs/ui-kit/src/index.ts"]
     }
   },

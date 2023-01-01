@@ -98,35 +98,16 @@
         <p>Manager players</p>
       </article>
     </section>
-    <div class="latestaverages">
-      <h1 class="title">Latest averages</h1>
-      <div class="chartcontainer">
-        <p-chart
-          type="line"
-          [data]="basicData"
-          [options]="basicOptions"
-        ></p-chart>
-      </div>
+    <div class="section">
+      <playdarts-counters [darkMode]="darkMode"></playdarts-counters>
     </div>
-    <div class="recentgames">
-      <h1 class="title">Recent games</h1>
-      <div class="games">
-        <div class="game">
-          <p>05/05/2022 - 501 CPU - 50.23 AVG - 20% finish</p>
-        </div>
-        <div class="game">
-          <p>05/05/2022 - 501 CPU - 50.23 AVG - 20% finish</p>
-        </div>
-        <div class="game">
-          <p>05/05/2022 - 501 CPU - 50.23 AVG - 20% finish</p>
-        </div>
-        <div class="game">
-          <p>05/05/2022 - 501 CPU - 50.23 AVG - 20% finish</p>
-        </div>
-        <div class="game">
-          <p>05/05/2022 - 501 CPU - 50.23 AVG - 20% finish</p>
-        </div>
-      </div>
+    <div class="section">
+      <playdarts-latest-averages
+        [darkMode]="darkMode"
+      ></playdarts-latest-averages>
+    </div>
+    <div class="section">
+      <playdarts-recent-games [darkMode]="darkMode"></playdarts-recent-games>
     </div>
   </div>
 </div>

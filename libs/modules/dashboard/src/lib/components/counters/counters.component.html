@@ -1,0 +1,31 @@
+<section class="counters">
+  <h1 class="title">Numbers</h1>
+  <div class="topnumbers">
+    <div class="topnumber">
+      <p>180's</p>
+      <p>12</p>
+    </div>
+    <div class="topnumber">
+      <p>140's</p>
+      <p>56</p>
+    </div>
+    <div class="topnumber">
+      <p>Average</p>
+      <p>50.32%</p>
+    </div>
+    <div class="topnumber">
+      <p>Checkout</p>
+      <p>140</p>
+    </div>
+  </div>
+  <div *ngIf="!isMobile" class="bars">
+    <div class="bar">
+      <h2>Type of games played</h2>
+      <p-chart type="doughnut" [options]="chartOptions" [data]="data"></p-chart>
+    </div>
+    <div class="bar">
+      <h2>Number of games played</h2>
+      <p-chart type="doughnut" [options]="chartOptions" [data]="data"></p-chart>
+    </div>
+  </div>
+</section>

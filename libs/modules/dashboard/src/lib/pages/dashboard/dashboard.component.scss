@@ -2,13 +2,12 @@
   color: var(--black-color);
   .dashboard-content {
     .actions {
-      margin-top: 1rem;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 4rem;
       .action {
         color: white;
-        background: var(--purple-color);
+        background: var(--light-purple-color);
         box-shadow: 0px 25.074px 40px rgb(41 72 152 / 5%), 0px 76.5297px 55.32px rgb(41 72 152 / 4%), 0px 45.4805px 30.0871px rgb(41 72 152 / 3%), 0px 23.6149px 15.3497px rgb(41 72 152 / 3%), 0px 9.62088px 7.6967px rgb(41 72 152 / 2%), 0px 2.18656px 3.71716px rgb(41 72 152 / 1%);
         border: 1px solid var(--gray-color);
         border-radius: 10px;
@@ -31,41 +30,18 @@
         }
       }
     }
-    .latestaverages {
+    .section {
+      background-color: white;
       margin-top: 2rem;
-      .title {
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-      .chartcontainer {
-        width: 70%;
-      }
-    }
-    .recentgames {
-      margin-top: 2rem;
-      .title {
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-      .game {
-        width: 98%;
-        margin-bottom: 1rem;
-        padding-bottom: 1rem;
-        cursor: pointer;
-        border-bottom: 1px solid var(--black-color);
-        &:last-child {
-          border-bottom: none;
-        }
-      }
+      padding: 1.5rem;
+      border-radius: 10px;
     }
   }
   &.darkMode {
     color: white;
     .dashboard-content {
-      .recentgames {
-        .game {
-          border-bottom: 1px solid white;
-        }
+      .section {
+        background-color: var(--black-color);
       }
     }
   }
@@ -92,12 +68,9 @@
           }
         }
       }
-      .latestaverages {
-        .chartcontainer {
-          width: 100%;
-        }
+      .section {
+        padding: 1rem;
       }
     }
   }
-
 }

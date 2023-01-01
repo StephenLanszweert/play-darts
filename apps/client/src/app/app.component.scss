@@ -5,6 +5,7 @@
   display: grid;
   grid-template-columns: 5% 1fr;
   transition: grid-template-columns 0.5s ease-out;
+  -webkit-tap-highlight-color: transparent;
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -13,11 +14,9 @@
   }
   .content {
     height: 90vh;
+    padding: 1rem 2rem;
     overflow-y: scroll;
     background: var(--main-bg-color);
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 1rem;
   }
   &.sidebar-expanded {
     grid-template-columns: 15% 1fr;
@@ -43,7 +42,8 @@
       background: transparent;
     }
     .content {
-      padding-bottom: 3rem;
+      padding: 1rem;
+      padding-bottom: 5rem;
     }
     &.sidebar-expanded {
       grid-template-columns: 1fr;

@@ -1,0 +1,27 @@
+{
+  "name": "modules-game",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/modules/game/src",
+  "prefix": "playdarts",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/modules/game"],
+      "options": {
+        "jestConfig": "libs/modules/game/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/modules/game/**/*.ts",
+          "libs/modules/game/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["module:game"]
+}

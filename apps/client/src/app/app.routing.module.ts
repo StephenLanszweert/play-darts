@@ -9,13 +9,12 @@ export const APP_ROUTES: Routes = [
     redirectTo: '/dashboard',
   },
   {
-    path: 'game',
-    pathMatch: 'full',
-    component: HomeComponent
-  },
-  {
     path: 'dashboard',
     loadChildren: () => import('@playdarts/dashboard').then((m) => m.DashboardModule),
+  },
+  {
+    path: 'game',
+    loadChildren: () => import('@playdarts/game').then((m) => m.GameModule),
   },
   {
     path: 'notauthorized',
