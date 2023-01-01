@@ -38,7 +38,6 @@ export class TopbarComponent implements OnInit {
     ).subscribe(res => this.darkMode = res);
 
     this.selectedLanguage$ = this.store.select(getApplicationLanguage).pipe(
-      tap(rs => console.log(rs)),
       map(x => { value: x }),
     );
 
@@ -72,7 +71,7 @@ export class TopbarComponent implements OnInit {
   }
 
   setLanguage(e: any) {
-    console.log(e);
+    // console.log(e);
   }
 
   ngOnDestroy() {

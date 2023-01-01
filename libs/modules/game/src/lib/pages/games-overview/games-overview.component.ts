@@ -19,7 +19,7 @@ export class GamesOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.darkMode$ = this.store.select(getDarkMode);
     this.gameTypes = [
-      { id: 1, name: "501", favorite: true, currentlyPlaying: true },
+      { id: 1, name: "501", favorite: true, currentlyPlaying: false },
       { id: 2, name: "Scoring", favorite: false, currentlyPlaying: false },
       { id: 3, name: "Round the world", favorite: true, currentlyPlaying: false },
       { id: 4, name: "Scoring sheet", favorite: false, currentlyPlaying: false },
