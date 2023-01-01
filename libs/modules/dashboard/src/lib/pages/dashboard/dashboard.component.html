@@ -1,4 +1,7 @@
-<div class="dashboard-container" [class.darkMode]="darkMode">
+<div
+  class="dashboard-container"
+  [class.darkMode]="(darkMode$ | async) === true"
+>
   <div class="dashboard-content">
     <section class="actions">
       <article class="action">
@@ -99,15 +102,19 @@
       </article>
     </section>
     <div class="section">
-      <playdarts-counters [darkMode]="darkMode"></playdarts-counters>
+      <playdarts-counters
+        [darkMode]="(darkMode$ | async) === true"
+      ></playdarts-counters>
     </div>
     <div class="section">
       <playdarts-latest-averages
-        [darkMode]="darkMode"
+        [darkMode]="(darkMode$ | async) === true"
       ></playdarts-latest-averages>
     </div>
     <div class="section">
-      <playdarts-recent-games [darkMode]="darkMode"></playdarts-recent-games>
+      <playdarts-recent-games
+        [darkMode]="(darkMode$ | async) === true"
+      ></playdarts-recent-games>
     </div>
   </div>
 </div>

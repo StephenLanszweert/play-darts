@@ -1,7 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { setDarkMode } from 'libs/core/src/lib/state/core.actions';
+import { getApplicationLanguage, getDarkMode } from 'libs/core/src/lib/state/core.selectors';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { filter } from 'rxjs';
+import { OverlayPanel } from 'primeng/overlaypanel';
+import { filter, Observable, Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'playdarts-topbar',
@@ -11,12 +15,19 @@ import { filter } from 'rxjs';
 export class TopbarComponent implements OnInit {
   isMobile = false;
   title = "";
-  darkMode = true;
+  destroy$ = new Subject<void>();
+  darkMode!: boolean;
 
-  constructor(private router: Router, private deviceService: DeviceDetectorService) { }
+  @ViewChild("settings") settings!: OverlayPanel;
+
+  constructor(private store: Store, private router: Router, private deviceService: DeviceDetectorService) { }
 
   ngOnInit(): void {
-    console.log(this.router.url);
+    this.store.select(getDarkMode).pipe(
+      tap(res => console.log(res)),
+      takeUntil(this.destroy$)
+    ).subscribe(res => this.darkMode = res);
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     )
@@ -39,5 +50,15 @@ export class TopbarComponent implements OnInit {
       default:
         this.title = "";
     }
+  }
+
+  toggleDarkMode(e: any) {
+    this.store.dispatch(setDarkMode({ darkMode: e.checked }));
+    this.settings.hide();
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

@@ -8,7 +8,7 @@
       <i class="pi pi-users"></i>
     </div>
     <div class="action">
-      <i (click)="op.toggle($event)" class="pi pi-sliders-h"></i>
+      <i (click)="settings.toggle($event)" class="pi pi-sliders-h"></i>
     </div>
     <div class="action">
       <i class="pi pi-user"></i>
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<p-overlayPanel #op>
+<p-overlayPanel #settings>
   <ng-template pTemplate>
     <div class="settings">
       <h1>Settings</h1>
@@ -24,6 +24,7 @@
         <p>Dark mode</p>
         <p-toggleButton
           [(ngModel)]="darkMode"
+          (onChange)="toggleDarkMode($event)"
           onIcon="pi pi-check"
           offIcon="pi pi-times"
           [style]="{ width: '2rem', height: '.5rem' }"

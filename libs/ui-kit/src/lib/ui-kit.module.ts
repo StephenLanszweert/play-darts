@@ -4,9 +4,10 @@ import * as fromComponents from './components';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { FormsModule } from '@angular/forms';
+import { CoreModule } from '@playdarts/core';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, OverlayPanelModule, ToggleButtonModule],
+  imports: [CoreModule, CommonModule, FormsModule, OverlayPanelModule, ToggleButtonModule],
   declarations: [fromComponents.components],
   exports: [fromComponents.components],
 })
