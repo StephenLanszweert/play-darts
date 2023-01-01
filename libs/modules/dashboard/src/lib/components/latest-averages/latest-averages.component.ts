@@ -2,6 +2,9 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { Store } from '@ngrx/store';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { getDarkMode } from 'libs/core/src/lib/state/core.selectors';
 
 @Component({
   selector: 'playdarts-latest-averages',
@@ -12,12 +15,20 @@ export class LatestAveragesComponent implements OnInit {
   isMobile: boolean = false;
   basicData: any;
   basicOptions: any;
-  @Input() darkMode = true;
+  darkMode!: boolean;
+  destroy$ = new Subject<void>();
 
-  constructor(private deviceService: DeviceDetectorService) { }
+  constructor(private store: Store, private deviceService: DeviceDetectorService) { }
 
   ngOnInit(): void {
     this.isMobile = this.deviceService.isMobile();
+    this.store.select(getDarkMode).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(val => {
+      this.darkMode = val;
+      this.updateChartOptions();
+    });
+
     Chart.register(ChartDataLabels);
     this.basicData = {
       labels: ['05/05/22', '10/05/22', '15/5/22', '20/5/22', '25/5/22'],
@@ -31,6 +42,9 @@ export class LatestAveragesComponent implements OnInit {
         }
       ]
     };
+  }
+
+  updateChartOptions() {
     this.basicOptions = {
       defaults: {
         font: {
@@ -80,5 +94,10 @@ export class LatestAveragesComponent implements OnInit {
         }
       }
     };
+  }
+
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

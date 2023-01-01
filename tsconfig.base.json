@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@playdarts/api/core": ["libs/api/core/src/index.ts"],
+      "@playdarts/api/game": ["libs/api/game/src/index.ts"],
       "@playdarts/api/users": ["libs/api/users/src/index.ts"],
       "@playdarts/core": ["libs/core/src/index.ts"],
       "@playdarts/core/authentication": [

@@ -23,7 +23,7 @@
               {
                 "sourceTag": "module:dashboard",
                 "onlyDependOnLibsWithTags": [
-                  "api",
+                  "api"
                 ]
               },
               {

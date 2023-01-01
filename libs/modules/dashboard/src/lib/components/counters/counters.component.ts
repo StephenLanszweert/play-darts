@@ -12,7 +12,7 @@ export class CountersComponent implements OnInit {
   isMobile: boolean = false;
   data: any;
   chartOptions: any;
-  @Input() darkMode = true;
+  @Input() darkMode!: boolean | null;
 
   constructor(private deviceService: DeviceDetectorService) { }
 

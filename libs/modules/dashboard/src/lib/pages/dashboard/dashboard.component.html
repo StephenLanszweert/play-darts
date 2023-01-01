@@ -4,7 +4,7 @@
 >
   <div class="dashboard-content">
     <section class="actions">
-      <article class="action">
+      <article class="action" (click)="navigateToGame()">
         <svg
           class="dashboardicon"
           width="39"
@@ -102,18 +102,14 @@
       </article>
     </section>
     <div class="section">
-      <playdarts-counters
-        [darkMode]="(darkMode$ | async) === true"
-      ></playdarts-counters>
+      <playdarts-counters [darkMode]="darkMode$ | async"></playdarts-counters>
     </div>
     <div class="section">
-      <playdarts-latest-averages
-        [darkMode]="(darkMode$ | async) === true"
-      ></playdarts-latest-averages>
+      <playdarts-latest-averages></playdarts-latest-averages>
     </div>
     <div class="section">
       <playdarts-recent-games
-        [darkMode]="(darkMode$ | async) === true"
+        [darkMode]="darkMode$ | async"
       ></playdarts-recent-games>
     </div>
   </div>

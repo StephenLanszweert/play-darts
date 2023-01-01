@@ -20,6 +20,20 @@
   <ng-template pTemplate>
     <div class="settings">
       <h1>Settings</h1>
+      <div
+        class="setting"
+        *ngIf="selectedLanguage$ | async as selectedLanguage"
+      >
+        <p>Language</p>
+        {{ selectedLanguage | json }}
+        <!-- <p-dropdown
+          [options]="languageOptions"
+          [ngModel]="selectedLanguage"
+          optionLabel="value"
+          optionValue="value"
+          (onChange)="setLanguage($event)"
+        ></p-dropdown> -->
+      </div>
       <div class="setting">
         <p>Dark mode</p>
         <p-toggleButton

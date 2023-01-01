@@ -15,7 +15,7 @@ export interface CorePartialState {
 }
 
 export const initialCoreState: CoreState = {
-  language: Language.English,
+  language: Language.EN,
   darkMode: true
 };
 

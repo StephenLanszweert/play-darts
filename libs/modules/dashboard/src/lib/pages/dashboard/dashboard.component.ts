@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { getDarkMode } from 'libs/core/src/lib/state/core.selectors';
 import { Observable } from 'rxjs';
@@ -14,9 +15,13 @@ export class DashboardComponent implements OnInit {
   mobile: boolean = false;
   darkMode$!: Observable<boolean>;
 
-  constructor(private store: Store) { }
+  constructor(private router: Router, private store: Store) { }
 
   ngOnInit(): void {
     this.darkMode$ = this.store.select(getDarkMode);
+  }
+
+  navigateToGame() {
+    this.router.navigate(['/game']);
   }
 }

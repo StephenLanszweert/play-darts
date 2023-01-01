@@ -1,5 +1,5 @@
 export enum Language {
-  Dutch = 1,
-  French = 2,
-  English = 4,
+  NL = 1,
+  FR = 2,
+  EN = 3,
 }

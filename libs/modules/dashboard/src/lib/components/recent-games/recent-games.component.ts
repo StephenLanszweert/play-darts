@@ -8,7 +8,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class RecentGamesComponent implements OnInit {
   isMobile: boolean = false;
-  @Input() darkMode = true;
+  @Input() darkMode!: boolean | null;
 
   constructor(private deviceService: DeviceDetectorService) { }
 
