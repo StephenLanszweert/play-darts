@@ -1,5 +1,9 @@
 <div class="gameTypes" [class.darkMode]="darkMode$ | async">
-  <div *ngFor="let gameType of gameTypes" class="gameType">
+  <div
+    *ngFor="let gameType of gameTypes"
+    class="gameType"
+    (click)="navigateToGameType(gameType.route)"
+  >
     <p>{{ gameType.name }}</p>
     <div class="icons">
       <div *ngIf="gameType.currentlyPlaying">

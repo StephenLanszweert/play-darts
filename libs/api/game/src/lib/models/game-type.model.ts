@@ -3,4 +3,5 @@ export type GameType = {
   name: string;
   favorite: boolean;
   currentlyPlaying: boolean;
+  route: string;
 };

@@ -1,1 +1,1 @@
-export * from './lib/modules-game.module';
+export * from './lib/game.module';

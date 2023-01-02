@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GamesOverviewComponent } from './pages';
+import { GamesOverviewComponent, StandardGameComponent } from './pages';
 
 const routes: Routes = [
   {
@@ -10,6 +10,10 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         component: GamesOverviewComponent,
+      },
+      {
+        path: 'standardgame',
+        component: StandardGameComponent,
       },
     ],
   },
