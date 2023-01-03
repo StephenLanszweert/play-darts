@@ -1,0 +1,154 @@
+<div class="standard-game-counters" [class.darkMode]="darkMode">
+  <div class="players" *ngIf="game.players.length === 2">
+    <div
+      class="left"
+      [class.active]="game.players[0].id === game.activePlayer.id"
+    >
+      <p class="name">
+        <i
+          class="pi pi-angle-right"
+          *ngIf="game.players[0].id === game.activePlayer.id"
+        ></i>
+        {{ game.players[0].player.name }}
+      </p>
+      <h1>
+        {{
+          game.players[0].sets[game.currentSet].legs[game.currentLeg].throws.at(
+            -1
+          )?.remainingScore ?? 501
+        }}
+      </h1>
+      <h2 class="outshot">Bull - Bull - D16</h2>
+      <div class="stats">
+        <div>
+          <p>AVG</p>
+          <p>150.00</p>
+        </div>
+        <div>
+          <p>Sets</p>
+          <p>0</p>
+        </div>
+        <div>
+          <p>Double</p>
+          <p>20.30%</p>
+        </div>
+        <div>
+          <p>Legs</p>
+          <p>10</p>
+        </div>
+        <div>
+          <p>Darts</p>
+          <p>13</p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="right"
+      [class.active]="game.players[1].id === game.activePlayer.id"
+    >
+      <p class="name">
+        <i
+          class="pi pi-angle-right"
+          *ngIf="game.players[1].id === game.activePlayer.id"
+        ></i>
+        {{ game.players[1].player.name }}
+      </p>
+      <h1>
+        {{
+          game.players[1].sets[game.currentSet].legs[game.currentLeg].throws.at(
+            -1
+          )?.remainingScore ?? 501
+        }}
+      </h1>
+      <h2 class="outshot"></h2>
+      <div class="stats">
+        <div>
+          <p>AVG</p>
+          <p>150.00</p>
+        </div>
+        <div>
+          <p>Sets</p>
+          <p>0</p>
+        </div>
+        <div>
+          <p>Double</p>
+          <p>20.30%</p>
+        </div>
+        <div>
+          <p>Legs</p>
+          <p>10</p>
+        </div>
+        <div>
+          <p>Darts</p>
+          <p>13</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="players multiple" *ngIf="game.players.length > 2">
+    <div class="left">
+      <p class="name">
+        <i class="pi pi-angle-right"></i>
+        {{ game.activePlayer.player.name }}
+      </p>
+
+      <h1>
+        {{
+          game.activePlayer.sets[game.currentSet].legs[
+            game.currentLeg
+          ].throws.at(-1)?.remainingScore ?? 501
+        }}
+      </h1>
+      <h2 class="outshot"></h2>
+      <div class="stats">
+        <div>
+          <p>AVG</p>
+          <p>150.00</p>
+        </div>
+        <div>
+          <p>Sets</p>
+          <p>0</p>
+        </div>
+        <div>
+          <p>Double</p>
+          <p>20.30%</p>
+        </div>
+        <div>
+          <p>Legs</p>
+          <p>10</p>
+        </div>
+        <div>
+          <p>Darts</p>
+          <p>13</p>
+        </div>
+      </div>
+    </div>
+    <div class="right otherPlayers">
+      <div *ngFor="let player of game.players" class="otherPlayer">
+        <div *ngIf="player.id !== game.activePlayer.id" class="playerLine">
+          <p>{{ player.player.name }}</p>
+          <div>
+            <p>
+              1 set(s)<br *ngIf="isMobile" /><span *ngIf="!isMobile"> - </span>2
+              leg(s)
+            </p>
+            <p>
+              Last: 120
+              <!-- {{
+                player.sets[game.currentSet].legs[game.currentLeg].throws.at(-1)
+                  ?.score
+              }} -->
+            </p>
+            <p>
+              Score: 123
+              <!-- {{
+                player.sets[game.currentSet].legs[game.currentLeg].throws.at(-1)
+                  ?.remainingScore
+              }} -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

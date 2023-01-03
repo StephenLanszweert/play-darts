@@ -32,3 +32,9 @@ p, h1, h2, h3, h4, h5, h6 {
   overflow-wrap: break-word;
 }
 
+::-webkit-scrollbar {
+  width: 10px !important;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--black-color) !important;
+}

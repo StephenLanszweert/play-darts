@@ -1,0 +1,119 @@
+.standard-game-counters {
+  height: 100%;
+  color: var(--black-color);
+  border-bottom: 1px solid white;
+  .players {
+    display: flex;
+    height: 100%;
+    .left, .right {
+      width: 50%;
+      height: 100%;
+      position: relative;
+      &.active {
+        background: white;
+      }
+      h1, h2 {
+        text-align: center;
+      }
+      .name {
+        margin: 1rem 0 0 1rem;
+      }
+      h2 {
+        font-size: 1.3rem;
+        display: inline-block;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      .stats {
+        position: absolute;
+        bottom: 1rem;
+        left: 8px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        display: grid;
+        grid-template-columns: 55% 30%;
+        grid-template-rows: 1fr 1fr 1fr;
+        gap: 0.5rem 2rem;
+        div {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+    .left {
+      border-right: 1px solid white;
+    }
+    .right.otherPlayers {
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      height: 100%;
+      min-height: 100%;
+      .otherPlayer {
+        border-bottom: 1px solid white;
+        &:last-child, &:first-child {
+          border-bottom: none;
+        }
+        .playerLine {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          align-items: center;
+          justify-content: space-between;
+          padding: .5rem;
+          div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .5rem;
+          }
+        }
+      }
+    }
+  }
+  &.darkMode {
+    color: white;
+    border-bottom: 1px solid var(--black-color);
+    .players {
+      .left {
+        border-right: 1px solid var(--black-color);
+      }
+      .left, .right {
+        &.active {
+          background-color: var(--black-color);
+        }
+      }
+      .right.otherPlayers {
+        .otherPlayer {
+          border-bottom: 1px solid var(--black-color);
+          &:last-child, &:first-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 850px){
+  .standard-game-counters {
+    .players {
+      .left, .right {
+        .stats {
+          width: 85%;
+          font-size: 0.7rem;
+        }
+      }
+      .right.otherPlayers {
+        .otherPlayer {
+          .playerLine {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+}

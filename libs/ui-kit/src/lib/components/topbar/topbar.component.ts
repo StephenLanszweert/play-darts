@@ -53,15 +53,30 @@ export class TopbarComponent implements OnInit {
 
   updateTitle(url: string) {
     const parts = url.split("/");
-    switch (parts[1]) {
-      case "dashboard":
-        this.title = "Dashboard";
-        break;
-      case "game":
-        this.title = "Game";
-        break;
+
+    if (parts[1] === "dashboard") {
+      this.title = "Dashboard";
+      return;
+    }
+
+    if (parts[1] === "game") {
+      this.title = this.getGameTitle(parts);
+      return;
+    }
+
+    this.title = "";
+  }
+
+  getGameTitle(parts: string[]): string {
+    if (parts.length === 2) {
+      return "Game";
+    }
+    switch (parts[2]) {
+      case "standardgame":
+        console.log(parts[2]);
+        return "501 game";
       default:
-        this.title = "";
+        return "Game";
     }
   }
 

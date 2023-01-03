@@ -1,0 +1,131 @@
+.standardGameConfig {
+  margin: 1rem;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  min-height: 80%;
+  h1 {
+    font-size: 1.2rem;
+  }
+  .section {
+    h2 {
+      font-size: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
+  .players-section {
+    .players {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      .player {
+        display: flex;
+        align-items: center;
+        padding: .5rem;
+        border-radius: 10px;
+        background: var(--main-bg-color);
+        ::ng-deep .p-button.removeBtn {
+          background: transparent;
+          border: 1px solid var(--light-purple-color);
+          color: var(--black-color);
+          width: 1.5rem;
+          height: 1.3rem;
+          margin-left: 1rem;
+        }
+        ::ng-deep .p-button:enabled:hover.removeBtn {
+          background: var(--dark-purple-color);
+          color: white;
+        }
+      }
+      ::ng-deep .p-button.addBtn {
+        background: var(--light-purple-color);
+        border: none;
+        color: white;
+        width: 3rem;
+        height: 3rem;
+      }
+      ::ng-deep .p-button:enabled:hover.addBtn {
+        background: var(--dark-purple-color);
+      }
+    }
+  }
+  .checkout-section {
+    .checkouts {
+      display: flex;
+      gap: 1rem;
+      .checkout {
+        display: flex;
+        align-items: center;
+        padding: .5rem;
+        border-radius: 10px;
+        background: var(--main-bg-color);
+        cursor: pointer;
+        &.active {
+          background: var(--light-purple-color);
+          color: white;
+        }
+      }
+    }
+  }
+  .bestOf-section {
+    .bestOf {
+      display: flex;
+      gap: 1rem;
+      .sets, .legs {
+        ::ng-deep .p-inputnumber-input {
+          width: 3rem;
+          height: 2rem;
+          background: var(--main-bg-color);
+        }
+        span {
+          margin-left: .5rem;
+          color: var(--black-color);
+        }
+      }
+    }
+  }
+  .start-section {
+    ::ng-deep .p-dropdown {
+      background: var(--main-bg-color);
+    }
+  }
+  ::ng-deep .p-button.startBtn {
+    margin-top: 1rem;
+    background: var(--light-purple-color);
+    border: none;
+    color: white;
+    height: 3rem;
+    min-width: 5rem;
+  }
+  ::ng-deep .p-button:enabled:hover.startBtn {
+    background: var(--dark-purple-color);
+  }
+  &.darkMode {
+    background: var(--black-color);
+    h1 {
+      color: white;
+    }
+    .section {
+      h2 {
+        color: white;
+      }
+    }
+    .bestOf-section {
+      .bestOf {
+        .sets, .legs {
+          span {
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 850px){
+  .standardGameConfig {
+    margin-bottom: 5rem;
+  }
+}

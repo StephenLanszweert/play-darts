@@ -1,72 +1,15 @@
-<div *ngIf="gameStarted">
-  <h1>Standard game</h1>
+<div *ngIf="gameStarted" class="standardgame" (click)="switchPlayer()">
+  <div class="counters">
+    <playdarts-standard-game-counters
+      [game]="game"
+      [darkMode]="darkMode$ | async"
+    ></playdarts-standard-game-counters>
+  </div>
+  <div *ngIf="!isMobile" style="background-color: #f5f8ff" class="stats">2</div>
+  <div class="actions">3</div>
+  <!-- <playdarts-standard-game-counters></playdarts-standard-game-counters> -->
 </div>
 
-<div
-  class="standardGameConfig"
+<playdarts-standard-game-config
   *ngIf="!gameStarted"
-  [class.darkMode]="darkMode$ | async"
->
-  <h1>New standard game</h1>
-  <div class="section players-section">
-    <h2>Players</h2>
-    <div class="players">
-      <div *ngFor="let player of players" class="player">
-        <span>{{ player.name }}</span>
-        <button
-          pButton
-          pRipple
-          type="button"
-          icon="pi pi-minus"
-          (click)="removePlayer(player.id)"
-          class="p-button-rounded p-button-outlined removeBtn"
-        ></button>
-      </div>
-      <button
-        pButton
-        pRipple
-        type="button"
-        icon="pi pi-plus"
-        (click)="addPlayer('Test')"
-        class="p-button-rounded p-button-outlined addBtn"
-      ></button>
-    </div>
-  </div>
-  <div class="section checkout-section">
-    <h2>Checkout</h2>
-    <div class="checkouts">
-      <div class="checkout active">Double</div>
-      <div class="checkout">Straight</div>
-      <div class="checkout">Masters</div>
-    </div>
-  </div>
-  <div class="section bestOf-section">
-    <h2>Best of</h2>
-    <div class="bestOf">
-      <div class="sets">
-        <p-inputNumber></p-inputNumber>
-        <span>sets</span>
-      </div>
-      <div class="legs">
-        <p-inputNumber></p-inputNumber>
-        <span>legs</span>
-      </div>
-    </div>
-  </div>
-  <div class="section start-section">
-    <h2>Start player</h2>
-    <p-dropdown
-      [options]="players"
-      [(ngModel)]="startPlayer"
-      optionLabel="name"
-      optionValue="id"
-    ></p-dropdown>
-  </div>
-  <button
-    pButton
-    pRipple
-    type="button"
-    label="Start"
-    class="p-button startBtn"
-  ></button>
-</div>
+></playdarts-standard-game-config>

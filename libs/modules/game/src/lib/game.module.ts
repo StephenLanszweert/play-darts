@@ -4,6 +4,7 @@ import { ChartModule } from 'primeng/chart';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import * as fromPages from './pages';
+import * as fromComponents from './components';
 import { GameRoutingModule } from './game.routing.module';
 import { UiKitModule } from '@playdarts/ui-kit';
 import { ButtonModule } from 'primeng/button';
@@ -13,6 +14,6 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [ButtonModule, CommonModule, ChartModule, DropdownModule, FormsModule, GameRoutingModule, InputNumberModule, UiKitModule],
-  declarations: [fromPages.pages],
+  declarations: [fromPages.pages, fromComponents.components],
 })
 export class GameModule { }
