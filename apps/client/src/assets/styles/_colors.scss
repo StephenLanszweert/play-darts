@@ -1,10 +1,16 @@
 :root {
-  --sidebar-color: #3C4B64;
-  --main-bg-color: #EBEDEF;
-  --light-purple-color: #413895;
-  --dark-purple-color: #4c41af;
-  --black-color: #5D5D68;
-  --dark-black-color: #181924;
+  --topbar-color-darkmode: hsl(218, 10%, 19%);
+  --topbar-color: hsl(213, 13%, 93%);
+  --sidebar-color: hsl(213, 13%, 92%);
+  --sidebar-color-darkmode: hsl(218, 13%, 25%);
+  --main-bg-color-darkmode: hsl(240, 6%, 24%);
+  --main-bg-color: hsl(218, 11%, 96%);
+  --white-color: white;
+  --dark-color: hsl(240, 6%, 30%);
+  --light-purple-color: hsl(246, 35%, 53%);
+  --dark-purple-color: hsl(246, 30%, 47%);
+  --black-color: hsl(240, 6%, 25%);
+  --dark-black-color: hsl(235, 20%, 17%);
   --error-color: #DD4040;
   --warning-color: #FFA62B;
 }

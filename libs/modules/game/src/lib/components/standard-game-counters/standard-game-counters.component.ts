@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Player, StandardGame } from '@playdarts/api/game';
+import { Game } from 'libs/api/game/src/lib/models/game.model';
 import { getDarkMode } from 'libs/core/src/lib/state/core.selectors';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Observable } from 'rxjs';
@@ -13,7 +14,16 @@ import { Observable } from 'rxjs';
 export class StandardGameCountersComponent implements OnInit {
   isMobile!: boolean;
 
-  @Input() game!: StandardGame;
+  private _game!: StandardGame | null;
+  get game(): StandardGame | null {
+    return this._game;
+  }
+  @Input() set game(value: StandardGame | null) {
+    if (!value) return;
+    this._game = value;
+    console.log("game set");
+  }
+
   @Input() currentSet!: StandardGame;
   @Input() darkMode: boolean | null = true;
 

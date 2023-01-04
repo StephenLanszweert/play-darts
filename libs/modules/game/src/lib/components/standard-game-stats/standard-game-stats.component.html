@@ -1,0 +1,40 @@
+<div *ngIf="game" class="standard-game-stats" [class.darkMode]="darkMode">
+  <h1>Current stats: {{ game.activePlayer.player.name }}</h1>
+  <h2>Latest shots</h2>
+  <div class="latest-shots">
+    <!-- <div
+      *ngFor="
+        let throw of game.activePlayer.sets[game.currentSet].legs[
+          game.currentLeg
+        ].throws.reverse() | slice: 0:5
+      "
+    >
+      {{ throw.score }} - {{ throw.remainingScore }} remaining
+    </div> -->
+  </div>
+  <h2>Stats</h2>
+  <div class="stats">
+    <div>3-dart AVG</div>
+    <div>50.32</div>
+    <div>First 9 darts</div>
+    <div>65.00</div>
+    <div>AVG until 100</div>
+    <div>50.00</div>
+    <div>AVG until 170</div>
+    <div>55.00</div>
+    <div>CO AVG</div>
+    <div>45.23</div>
+    <div>Highest CO</div>
+    <div>96</div>
+    <div>Doubles</div>
+    <div>1/5 - 20%</div>
+    <div>High scores</div>
+    <div>
+      <p>140 - 2</p>
+      <p>100 - 5</p>
+      <p>81 - 3</p>
+      <p>60 - 5</p>
+      <p>41 - 5</p>
+    </div>
+  </div>
+</div>

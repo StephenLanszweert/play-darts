@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 8px;
+  background: var(--topbar-color);
   h1 {
     font-size: 1.2rem;
   }
@@ -18,7 +19,7 @@
     }
   }
   &.darkMode {
-    background: var(--sidebar-color);
+    background: var(--topbar-color-darkmode);
     color: white;
     .actions .action {
       color: white;

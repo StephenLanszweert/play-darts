@@ -1,11 +1,11 @@
 .sidebar {
   position: relative;
   height: 100%;
-  background: white;
-  color: var(--black-color);
+  background: var(--sidebar-color);
+  color: var(--white-color);
   .brand {
-    color: var(--black-color);
-    background: var(--main-bg-color);
+    color: var(--dark-color);
+    background: var(--topbar-color);
     display: flex;
     height: 10%;
     .logo {
@@ -23,7 +23,7 @@
     align-items: center;
         a {
           outline: none;
-          color: var(--black-color);
+          color: var(--dark-color);
           text-decoration: none;
           display: flex;
           align-items: center;
@@ -50,22 +50,22 @@
             }
           }
           .sidebaricon * {
-            fill: var(--black-color);
+            fill: var(--dark-color);
           }
         }
       }
   &.darkMode {
     color: white;
-    background: var(--sidebar-color);
+    background: var(--sidebar-color-darkmode);
     .brand {
       color: white;
-      background: var(--dark-black-color);
+      background: var(--topbar-color-darkmode);
     }
     nav {
       a {
-        color: white;
+        color: var(--white-color);
         .sidebaricon * {
-          fill: white;
+          fill: var(--white-color);
         }
       }
     }
@@ -112,7 +112,6 @@
     bottom: 0;
     width: 100%;
     z-index: 10;
-    background: var(--gray-color);
     height: 4rem;
   }
   .sidebar {

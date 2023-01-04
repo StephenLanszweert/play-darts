@@ -89,6 +89,10 @@
   .start-section {
     ::ng-deep .p-dropdown {
       background: var(--main-bg-color);
+      .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+        background-color: var(--light-purple-color);
+        color: white;
+      }
     }
   }
   ::ng-deep .p-button.startBtn {
@@ -112,13 +116,60 @@
         color: white;
       }
     }
+    .players-section .players .player {
+      background: var(--dark-black-color);
+      color: white;
+      ::ng-deep .p-button.removeBtn {
+        background: transparent;
+        border: 1px solid white;
+        color: white;
+        width: 1.5rem;
+        height: 1.3rem;
+        margin-left: 1rem;
+      }
+      ::ng-deep .p-button:enabled:hover.removeBtn {
+        background: var(--dark-purple-color);
+        color: white;
+      }
+    }
+    .checkout-section .checkouts .checkout {
+      background: var(--dark-black-color);
+      &.active {
+        background: var(--dark-black-color);
+      }
+    }
     .bestOf-section {
       .bestOf {
         .sets, .legs {
+          ::ng-deep .p-inputnumber-input {
+            background: var(--dark-black-color);
+            color: white;
+            border: none;
+          }
           span {
             color: white;
           }
         }
+      }
+    }
+    .start-section ::ng-deep .p-dropdown {
+      background-color: var(--dark-black-color);
+      color: white;
+      border: none;
+      .p-dropdown-label, .p-dropdown-trigger {
+        color: white;
+      }
+      .p-dropdown-panel .p-dropdown-items {
+        background: var(--dark-black-color);
+        color: white;
+      }
+      .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+        background: var(--dark-black-color);
+        color: white;
+      }
+      .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+        background-color: white;
+        color: var(--dark-black-color)
       }
     }
   }

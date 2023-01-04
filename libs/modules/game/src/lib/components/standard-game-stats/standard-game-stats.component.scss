@@ -1,0 +1,47 @@
+.standard-game-stats {
+  background: #f5f8ff;
+  height: 100%;
+  color: var(--black-color);
+  padding-left: 1rem;
+  padding-top: 1rem;
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    margin: 2rem 0 .5rem 0;
+    font-size: 1rem;
+  }
+  .latest-shots {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem 0;
+    font-size: 1rem;
+    div {
+      width: 60%;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--black-color);
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+  .stats {
+    font-size: 1rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  &.darkMode {
+    border-left: 1px solid var(--dark-black-color);
+    // border-top: 1px solid var(--black-color);
+    background: var(--black-color);
+    color: white;
+    .latest-shots {
+      div {
+        border-bottom: 1px solid white;
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+}

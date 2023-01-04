@@ -1,4 +1,4 @@
-<div class="standard-game-counters" [class.darkMode]="darkMode">
+<div *ngIf="game" class="standard-game-counters" [class.darkMode]="darkMode">
   <div class="players" *ngIf="game.players.length === 2">
     <div
       class="left"
@@ -18,7 +18,7 @@
           )?.remainingScore ?? 501
         }}
       </h1>
-      <h2 class="outshot">Bull - Bull - D16</h2>
+      <h2 class="outshot"></h2>
       <div class="stats">
         <div>
           <p>AVG</p>
@@ -26,7 +26,7 @@
         </div>
         <div>
           <p>Sets</p>
-          <p>0</p>
+          <p>{{ game.players[0].setsWon }}</p>
         </div>
         <div>
           <p>Double</p>
@@ -34,11 +34,16 @@
         </div>
         <div>
           <p>Legs</p>
-          <p>10</p>
+          <p>{{ game.players[0].sets[game.currentSet].legsWon }}</p>
         </div>
         <div>
           <p>Darts</p>
-          <p>13</p>
+          <p>
+            {{
+              game.players[0].sets[game.currentSet].legs[game.currentLeg]
+                .numberOfDarts
+            }}
+          </p>
         </div>
       </div>
     </div>
@@ -68,7 +73,7 @@
         </div>
         <div>
           <p>Sets</p>
-          <p>0</p>
+          <p>{{ game.players[1].setsWon }}</p>
         </div>
         <div>
           <p>Double</p>
@@ -76,11 +81,16 @@
         </div>
         <div>
           <p>Legs</p>
-          <p>10</p>
+          <p>{{ game.players[1].sets[game.currentSet].legsWon }}</p>
         </div>
         <div>
           <p>Darts</p>
-          <p>13</p>
+          <p>
+            {{
+              game.players[1].sets[game.currentSet].legs[game.currentLeg]
+                .numberOfDarts
+            }}
+          </p>
         </div>
       </div>
     </div>
@@ -107,7 +117,7 @@
         </div>
         <div>
           <p>Sets</p>
-          <p>0</p>
+          <p>{{ game.activePlayer.setsWon }}</p>
         </div>
         <div>
           <p>Double</p>
@@ -115,11 +125,16 @@
         </div>
         <div>
           <p>Legs</p>
-          <p>10</p>
+          <p>{{ game.activePlayer.sets[game.currentSet].legsWon }}</p>
         </div>
         <div>
           <p>Darts</p>
-          <p>13</p>
+          <p>
+            {{
+              game.activePlayer.sets[game.currentSet].legs[game.currentLeg]
+                .numberOfDarts
+            }}
+          </p>
         </div>
       </div>
     </div>

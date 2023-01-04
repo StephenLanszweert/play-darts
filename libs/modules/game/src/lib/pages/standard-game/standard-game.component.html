@@ -1,15 +1,21 @@
-<div *ngIf="gameStarted" class="standardgame" (click)="switchPlayer()">
+<div *ngIf="gameStarted" class="standardgame" (click)="switchPlayer$.next()">
   <div class="counters">
     <playdarts-standard-game-counters
-      [game]="game"
+      [game]="game | async"
       [darkMode]="darkMode$ | async"
     ></playdarts-standard-game-counters>
   </div>
-  <div *ngIf="!isMobile" style="background-color: #f5f8ff" class="stats">2</div>
+  <div *ngIf="!isMobile" class="stats">
+    <playdarts-standard-game-stats
+      [game]="game | async"
+      [darkMode]="darkMode$ | async"
+    ></playdarts-standard-game-stats>
+  </div>
   <div class="actions">3</div>
   <!-- <playdarts-standard-game-counters></playdarts-standard-game-counters> -->
 </div>
 
 <playdarts-standard-game-config
   *ngIf="!gameStarted"
+  (startGame)="startGame()"
 ></playdarts-standard-game-config>

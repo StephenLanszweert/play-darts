@@ -1,6 +1,7 @@
 .dashboard-container {
   margin: 1rem;
   color: var(--black-color);
+  background: var(--main-bg-color);
   .dashboard-content {
     .actions {
       display: grid;
@@ -9,7 +10,7 @@
       .action {
         color: white;
         background: var(--light-purple-color);
-        box-shadow: 0px 25.074px 40px rgb(41 72 152 / 5%), 0px 76.5297px 55.32px rgb(41 72 152 / 4%), 0px 45.4805px 30.0871px rgb(41 72 152 / 3%), 0px 23.6149px 15.3497px rgb(41 72 152 / 3%), 0px 9.62088px 7.6967px rgb(41 72 152 / 2%), 0px 2.18656px 3.71716px rgb(41 72 152 / 1%);
+        // box-shadow: 0px 25.074px 40px rgb(41 72 152 / 5%), 0px 76.5297px 55.32px rgb(41 72 152 / 4%), 0px 45.4805px 30.0871px rgb(41 72 152 / 3%), 0px 23.6149px 15.3497px rgb(41 72 152 / 3%), 0px 9.62088px 7.6967px rgb(41 72 152 / 2%), 0px 2.18656px 3.71716px rgb(41 72 152 / 1%);
         border-radius: 10px;
         padding: 1.5rem;
         cursor: pointer;
@@ -39,9 +40,13 @@
   }
   &.darkMode {
     color: white;
+    background: var(--dark-black-color);
     .dashboard-content {
       .section {
         background-color: var(--black-color);
+      }
+      .actions .action {
+        background: var(--dark-purple-color);
       }
     }
   }

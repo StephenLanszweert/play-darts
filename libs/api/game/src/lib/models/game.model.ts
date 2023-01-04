@@ -3,5 +3,4 @@ import { StandardGamePlayer } from "./standard-game-player.model";
 
 export type Game = {
   id: number;
-  type: GameType;
 };

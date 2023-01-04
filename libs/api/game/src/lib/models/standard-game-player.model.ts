@@ -4,19 +4,19 @@ export type StandardGamePlayer = {
   id: number;
   player: Player;
   sets: Set[];
+  setsWon: number;
 };
 
 export type Set = {
   id: number;
   legs: Leg[];
-  won: boolean;
+  legsWon: number;
 }
 
 export type Leg = {
   id: number;
   throws: Throw[];
   checkout: Checkout[];
-  won: boolean;
   numberOfDarts: number;
 }
 

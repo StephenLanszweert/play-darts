@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Player } from '@playdarts/api/game';
 import { getDarkMode } from 'libs/core/src/lib/state/core.selectors';
@@ -15,6 +15,8 @@ export class StandardGameConfigComponent implements OnInit {
   gameStarted!: boolean;
   players!: Player[];
   startPlayer!: Player | null;
+
+  @Output() startGame = new EventEmitter<void>();
 
   constructor(private store: Store) { }
 
