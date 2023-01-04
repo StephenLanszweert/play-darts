@@ -14,16 +14,7 @@ import { Observable } from 'rxjs';
 export class StandardGameCountersComponent implements OnInit {
   isMobile!: boolean;
 
-  private _game!: StandardGame | null;
-  get game(): StandardGame | null {
-    return this._game;
-  }
-  @Input() set game(value: StandardGame | null) {
-    if (!value) return;
-    this._game = value;
-    console.log("game set");
-  }
-
+  @Input() game!: StandardGame | null;
   @Input() currentSet!: StandardGame;
   @Input() darkMode: boolean | null = true;
 

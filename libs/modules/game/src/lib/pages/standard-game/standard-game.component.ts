@@ -33,15 +33,14 @@ export class StandardGameComponent implements OnInit, OnDestroy {
     this.isMobile = this.deviceService.isMobile();
     this.darkMode$ = this.store.select(getDarkMode);
     this.gameStarted = false;
-    this.startPlayer = this.players[0];
+    this.startPlayer = this.players[1];
 
     this.switchPlayer$.pipe(
       switchMap(() => this.game),
       switchMap((game) => {
         var randNum = this.randomIntFromInterval(1, 100);
-        const remainingScore = game.activePlayer.sets[game.currentSet].legs[game.currentLeg].throws.at(-1)?.remainingScore ?? 501;
-        console.log(remainingScore);
-        game.activePlayer.sets[game.currentSet].legs[game.currentLeg].throws.push({ score: randNum, remainingScore: remainingScore - randNum });
+        const remainingScore = game.activePlayer.sets[game.currentSet].legs[game.currentLeg].throws[0]?.remainingScore ?? 501;
+        game.activePlayer.sets[game.currentSet].legs[game.currentLeg].throws.unshift({ score: randNum, remainingScore: remainingScore - randNum });
         game.activePlayer.sets[game.currentSet].legs[game.currentLeg].numberOfDarts += 3;
         const activePlayerIndex = game.players.indexOf(game.activePlayer);
         if ((activePlayerIndex + 1) === game.players.length) {
@@ -57,61 +56,29 @@ export class StandardGameComponent implements OnInit, OnDestroy {
     ).subscribe();
   }
 
-  addPlayer(name: string) {
-    this.players.push({ id: this.players.length + 1, name });
-  }
-
-  removePlayer(id: number) {
-    this.players = this.players.filter(x => x.id !== id);
-    if (this.startPlayer?.id === id) {
-      this.startPlayer = this.players.length > 0 ? this.players[0] : null;
-    }
-  }
-
   startGame() {
-    const gamePlayers: StandardGamePlayer[] = [];
-    this.players.forEach(player => {
-      gamePlayers.push(
+    const gamePlayers: StandardGamePlayer[] = this.players.map(player => ({
+      id: player.id, player: player, setsWon: 0, sets: [
         {
-          id: player.id, player: player, setsWon: 0, sets: [
-            {
-              id: 1, legs: [{
-                id: 1, throws: [], checkout: [], won: false, numberOfDarts: 0
-              } as Leg],
-              legsWon: 0
-            } as Set
-          ]
-        }
-      )
-    });
-
+          id: 1, legs: [{
+            id: 1, throws: [], checkout: [], won: false, numberOfDarts: 0
+          } as Leg],
+          legsWon: 0
+        } as Set
+      ]
+    }));
     this.game.next(
       {
         id: 0,
         players: gamePlayers,
-        activePlayer: gamePlayers[0],
+        activePlayer: gamePlayers.find(x => x.id === this.startPlayer?.id) ?? gamePlayers[0],
         checkoutType: CheckoutType.Double,
         numberOfLegs: 3,
         currentSet: 0,
         currentLeg: 0,
         numberOfSets: 2,
       });
-    console.log(this.game);
     this.gameStarted = true;
-  }
-
-  switchPlayer() {
-    var randNum = this.randomIntFromInterval(1, 100);
-    // const remainingScore = this.game.activePlayer.sets[this.game.currentSet].legs[this.game.currentLeg].throws.at(-1)?.remainingScore ?? 501;
-    // this.game.activePlayer.sets[this.game.currentSet].legs[this.game.currentLeg].throws.push({ score: randNum, remainingScore: remainingScore - randNum });
-    // this.game.activePlayer.sets[this.game.currentSet].legs[this.game.currentLeg].numberOfDarts += 3;
-    // const activePlayerIndex = this.game.players.indexOf(this.game.activePlayer);
-    // if ((activePlayerIndex + 1) === this.game.players.length) {
-    //   this.game.activePlayer = this.game.players[0];
-    //   return;
-    // }
-
-    // this.game.activePlayer = this.game.players[activePlayerIndex + 1];
   }
 
   randomIntFromInterval(min: number, max: number) { // min and max included

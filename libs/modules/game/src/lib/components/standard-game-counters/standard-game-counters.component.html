@@ -12,11 +12,24 @@
         {{ game.players[0].player.name }}
       </p>
       <h1>
-        {{
-          game.players[0].sets[game.currentSet].legs[game.currentLeg].throws.at(
-            -1
-          )?.remainingScore ?? 501
-        }}
+        <span
+          *ngIf="
+            game.players[0].sets[game.currentSet].legs[game.currentLeg].throws
+              .length > 0
+          "
+        >
+          {{
+            game.players[0].sets[game.currentSet].legs[game.currentLeg]
+              .throws[0].remainingScore
+          }}
+        </span>
+        <span
+          *ngIf="
+            game.players[0].sets[game.currentSet].legs[game.currentLeg].throws
+              .length === 0
+          "
+          >501</span
+        >
       </h1>
       <h2 class="outshot"></h2>
       <div class="stats">
@@ -59,11 +72,24 @@
         {{ game.players[1].player.name }}
       </p>
       <h1>
-        {{
-          game.players[1].sets[game.currentSet].legs[game.currentLeg].throws.at(
-            -1
-          )?.remainingScore ?? 501
-        }}
+        <span
+          *ngIf="
+            game.players[1].sets[game.currentSet].legs[game.currentLeg].throws
+              .length > 0
+          "
+        >
+          {{
+            game.players[1].sets[game.currentSet].legs[game.currentLeg]
+              .throws[0].remainingScore
+          }}
+        </span>
+        <span
+          *ngIf="
+            game.players[1].sets[game.currentSet].legs[game.currentLeg].throws
+              .length === 0
+          "
+          >501</span
+        >
       </h1>
       <h2 class="outshot"></h2>
       <div class="stats">
@@ -103,11 +129,24 @@
       </p>
 
       <h1>
-        {{
-          game.activePlayer.sets[game.currentSet].legs[
-            game.currentLeg
-          ].throws.at(-1)?.remainingScore ?? 501
-        }}
+        <span
+          *ngIf="
+            game.activePlayer.sets[game.currentSet].legs[game.currentLeg].throws
+              .length > 0
+          "
+        >
+          {{
+            game.activePlayer.sets[game.currentSet].legs[game.currentLeg]
+              .throws[0].remainingScore
+          }}
+        </span>
+        <span
+          *ngIf="
+            game.activePlayer.sets[game.currentSet].legs[game.currentLeg].throws
+              .length === 0
+          "
+          >501</span
+        >
       </h1>
       <h2 class="outshot"></h2>
       <div class="stats">

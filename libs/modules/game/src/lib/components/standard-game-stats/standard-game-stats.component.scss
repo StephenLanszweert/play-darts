@@ -1,6 +1,7 @@
 .standard-game-stats {
   background: #f5f8ff;
   height: 100%;
+  border-left: 1px solid white;
   color: var(--black-color);
   padding-left: 1rem;
   padding-top: 1rem;
@@ -32,7 +33,6 @@
   }
   &.darkMode {
     border-left: 1px solid var(--dark-black-color);
-    // border-top: 1px solid var(--black-color);
     background: var(--black-color);
     color: white;
     .latest-shots {

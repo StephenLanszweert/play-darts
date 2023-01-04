@@ -4,6 +4,7 @@
   padding: 1.5rem;
   border-radius: 10px;
   min-height: 80%;
+  width: 40%;
   h1 {
     font-size: 1.2rem;
   }
@@ -101,7 +102,7 @@
     border: none;
     color: white;
     height: 3rem;
-    min-width: 5rem;
+    min-width: 10rem;
   }
   ::ng-deep .p-button:enabled:hover.startBtn {
     background: var(--dark-purple-color);
@@ -165,11 +166,10 @@
       }
       .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
         background: var(--dark-black-color);
-        color: white;
+        color: #5D5D68;
       }
       .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
-        background-color: white;
-        color: var(--dark-black-color)
+        color: white;
       }
     }
   }
@@ -177,6 +177,10 @@
 
 @media only screen and (max-width: 850px){
   .standardGameConfig {
+    width: 90%;
     margin-bottom: 5rem;
+    ::ng-deep .p-button.startBtn {
+      width: 100%;
+    }
   }
 }

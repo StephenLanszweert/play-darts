@@ -1,9 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Player, StandardGame } from '@playdarts/api/game';
-import { getDarkMode } from 'libs/core/src/lib/state/core.selectors';
+import { StandardGame, Throw } from '@playdarts/api/game';
 import { DeviceDetectorService } from 'ngx-device-detector';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'playdarts-standard-game-stats',
@@ -12,8 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class StandardGameStatsComponent implements OnInit {
   isMobile!: boolean;
-  @Input() game!: StandardGame | null;
+  latestThrows!: Throw[];
   @Input() darkMode: boolean | null = true;
+  @Input() game!: StandardGame | null;
 
   constructor(private deviceService: DeviceDetectorService) { }
 

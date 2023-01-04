@@ -73,7 +73,6 @@ export class TopbarComponent implements OnInit {
     }
     switch (parts[2]) {
       case "standardgame":
-        console.log(parts[2]);
         return "501 game";
       default:
         return "Game";

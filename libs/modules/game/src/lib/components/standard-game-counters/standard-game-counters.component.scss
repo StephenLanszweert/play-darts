@@ -5,12 +5,17 @@
   .players {
     display: flex;
     height: 100%;
+    &.multiple .left, &.multiple .right {
+      color: var(--black-color);
+    }
     .left, .right {
       width: 50%;
       height: 100%;
       position: relative;
+      color: var(--light-black-color);
       &.active {
-        background: rgb(196, 193, 193);
+        color: var(--black-color);
+        // background: #f5f8ff;
       }
       h1, h2 {
         text-align: center;
@@ -81,9 +86,14 @@
       .left {
         border-right: 1px solid var(--black-color);
       }
+      &.multiple .left, &.multiple .right {
+        color: white;
+      }
       .left, .right {
+        color: var(--black-color);
         &.active {
-          background-color: var(--black-color);
+          color: white;
+          // background-color: var(--black-color);
         }
       }
       .right {

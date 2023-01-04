@@ -2,15 +2,15 @@
   <h1>Current stats: {{ game.activePlayer.player.name }}</h1>
   <h2>Latest shots</h2>
   <div class="latest-shots">
-    <!-- <div
+    <div
       *ngFor="
         let throw of game.activePlayer.sets[game.currentSet].legs[
           game.currentLeg
-        ].throws.reverse() | slice: 0:5
+        ].throws | slice: 0:5
       "
     >
       {{ throw.score }} - {{ throw.remainingScore }} remaining
-    </div> -->
+    </div>
   </div>
   <h2>Stats</h2>
   <div class="stats">
