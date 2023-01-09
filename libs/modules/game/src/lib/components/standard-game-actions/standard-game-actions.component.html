@@ -1,0 +1,23 @@
+<div class="standard-game-actions" [class.darkMode]="darkMode">
+  <div class="top-actions">
+    <div class="action">
+      <i class="pi pi-undo" style="font-size: 1.7rem"></i>
+      <span *ngIf="!isMobile">Undo</span>
+    </div>
+    <div class="action score">100</div>
+    <div class="action">
+      <i class="pi pi-external-link" style="font-size: 1.7rem"></i
+      ><span *ngIf="!isMobile">Exit game</span>
+    </div>
+  </div>
+  <div class="numbers">
+    <div class="action" *ngFor="let actionNumber of actionNumbers">
+      {{ actionNumber }}
+    </div>
+  </div>
+  <div class="bottom-actions">
+    <div class="action">Clear</div>
+    <div class="action">0</div>
+    <div class="action">Ok</div>
+  </div>
+</div>

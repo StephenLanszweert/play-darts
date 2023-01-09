@@ -1,0 +1,65 @@
+.standard-game-actions {
+  height: 100%;
+  display: grid;
+  grid-template-rows: 20% 60% 20%;
+  color: var(--black-color);
+  .top-actions {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    i {
+      margin-right: 1rem;
+    }
+  }
+  .numbers {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+  .bottom-actions {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+  }
+  .action {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid white;
+    &.score {
+      background-color: white;
+      font-size: 1.7rem;
+      &:hover {
+        cursor: initial;
+        color: initial;
+        background-color: white;
+      }
+    }
+    &:hover {
+      color: white;
+      background-color: var(--light-black-color);
+    }
+  }
+
+  &.darkMode {
+    color: white;
+    .action {
+      border: 1px solid var(--dark-color);
+      &.score {
+        background-color: var(--dark-color);
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 850px){
+  .standard-game-actions {
+    height: 85%;
+    .top-actions i {
+      margin-right: 0;
+    }
+  }
+}
+

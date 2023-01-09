@@ -11,8 +11,12 @@
       [darkMode]="darkMode$ | async"
     ></playdarts-standard-game-stats>
   </div>
-  <div class="actions">3</div>
-  <!-- <playdarts-standard-game-counters></playdarts-standard-game-counters> -->
+  <div class="actions">
+    <playdarts-standard-game-actions
+      [game]="game | async"
+      [darkMode]="darkMode$ | async"
+    ></playdarts-standard-game-actions>
+  </div>
 </div>
 
 <playdarts-standard-game-config

@@ -32,8 +32,10 @@ export class StandardGameComponent implements OnInit, OnDestroy {
     ]
     this.isMobile = this.deviceService.isMobile();
     this.darkMode$ = this.store.select(getDarkMode);
-    this.gameStarted = false;
+    // this.gameStarted = false;
     this.startPlayer = this.players[1];
+
+    this.startGame();
 
     this.switchPlayer$.pipe(
       switchMap(() => this.game),
