@@ -31,7 +31,19 @@
           >501</span
         >
       </h1>
-      <h2 class="outshot"></h2>
+      <h2 class="outshot">
+        {{
+          game.players[0].sets[game.currentSet].legs[game.currentLeg]
+            .throws[0] &&
+          game.players[0].sets[game.currentSet].legs[game.currentLeg].throws[0]
+            .remainingScore < 180
+            ? getOutshot(
+                game.players[0].sets[game.currentSet].legs[game.currentLeg]
+                  .throws[0].remainingScore
+              )
+            : ''
+        }}
+      </h2>
       <div class="stats">
         <div>
           <p>AVG</p>
@@ -91,7 +103,19 @@
           >501</span
         >
       </h1>
-      <h2 class="outshot"></h2>
+      <h2 class="outshot">
+        {{
+          game.players[1].sets[game.currentSet].legs[game.currentLeg]
+            .throws[0] &&
+          game.players[1].sets[game.currentSet].legs[game.currentLeg].throws[0]
+            .remainingScore < 180
+            ? getOutshot(
+                game.players[1].sets[game.currentSet].legs[game.currentLeg]
+                  .throws[0].remainingScore
+              )
+            : ''
+        }}
+      </h2>
       <div class="stats">
         <div>
           <p>AVG</p>
@@ -148,7 +172,25 @@
           >501</span
         >
       </h1>
-      <h2 class="outshot"></h2>
+      <h2 class="outshot">
+        {{
+          game.activePlayer.sets[game.currentSet].legs[game.currentLeg]
+            .throws[0] &&
+            game.activePlayer.sets[game.currentSet].legs[game.currentLeg]
+              .throws[0].remainingScore < 180
+        }}
+        {{
+          game.activePlayer.sets[game.currentSet].legs[game.currentLeg]
+            .throws[0] &&
+          game.activePlayer.sets[game.currentSet].legs[game.currentLeg]
+            .throws[0].remainingScore < 180
+            ? getOutshot(
+                game.activePlayer.sets[game.currentSet].legs[game.currentLeg]
+                  .throws[0].remainingScore
+              )
+            : ''
+        }}
+      </h2>
       <div class="stats">
         <div>
           <p>AVG</p>

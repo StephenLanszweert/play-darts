@@ -19,7 +19,7 @@
     grid-template-columns: 1fr 2fr 1fr;
   }
   .action {
-    border-radius: 10px;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -38,17 +38,31 @@
       color: white;
       background-color: var(--light-black-color);
     }
+    &:disabled {
+      background-color: red;
+    }
   }
 
   &.darkMode {
     color: white;
     .action {
       border: 1px solid var(--dark-color);
+      background: var(--dark-black-color);
+      color: white;
+      outline: none;
       &.score {
         background-color: var(--dark-color);
         &:hover {
+          background-color: var(--dark-color);
           color: white;
         }
+      }
+      &:hover {
+        color: white;
+        background-color: var(--light-black-color);
+      }
+      &:disabled {
+        color: var(--light-black-color);
       }
     }
   }
@@ -59,6 +73,26 @@
     height: 85%;
     .top-actions i {
       margin-right: 0;
+    }
+    .action {
+      &:hover {
+        background: initial;
+      }
+      &:active {
+        color: white;
+        background-color: var(--light-black-color);
+      }
+    }
+    &.darkMode {
+      .action {
+        &:hover {
+          background: var(--dark-black-color);
+        }
+        &:active {
+          color: white;
+          background-color: var(--light-black-color);
+        }
+      }
     }
   }
 }

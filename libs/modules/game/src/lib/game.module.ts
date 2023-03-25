@@ -12,8 +12,10 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
 @NgModule({
-  imports: [ButtonModule, CommonModule, ChartModule, DropdownModule, FormsModule, GameRoutingModule, InputNumberModule, UiKitModule],
+  imports: [ButtonModule, CommonModule, ConfirmDialogModule, ChartModule, DropdownModule, FormsModule, GameRoutingModule, InputNumberModule, UiKitModule],
   declarations: [fromPages.pages, fromComponents.components],
 })
 export class GameModule { }

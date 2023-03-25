@@ -16,7 +16,7 @@ export type Set = {
 export type Leg = {
   id: number;
   throws: Throw[];
-  checkout: Checkout[];
+  checkout: Checkout | null;
   numberOfDarts: number;
 }
 
@@ -26,7 +26,7 @@ export type Throw = {
 }
 
 export type Checkout = {
-  finished: boolean;
   number: number;
-  double: number;
+  doublesUsed: number;
+  dartsUsed: number;
 }
