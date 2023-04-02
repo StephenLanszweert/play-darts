@@ -5,7 +5,7 @@
       <span *ngIf="!isMobile">Undo</span>
     </button>
     <button class="action score">{{ score }}</button>
-    <button class="action">
+    <button (click)="stopGame.emit()" class="action">
       <i class="pi pi-external-link" style="font-size: 1.7rem"></i
       ><span *ngIf="!isMobile">Exit game</span>
     </button>

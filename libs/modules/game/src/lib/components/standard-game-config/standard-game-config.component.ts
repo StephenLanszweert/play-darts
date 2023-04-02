@@ -11,10 +11,8 @@ import { Observable } from 'rxjs';
 })
 export class StandardGameConfigComponent implements OnInit {
   darkMode$!: Observable<boolean>;
-
-  gameStarted!: boolean;
-  players!: Player[];
-  startPlayer!: Player | null;
+  players: Player[] = [];
+  startPlayer: Player | null;
 
   @Output() startGame = new EventEmitter<void>();
 
@@ -22,12 +20,6 @@ export class StandardGameConfigComponent implements OnInit {
 
   ngOnInit(): void {
     this.darkMode$ = this.store.select(getDarkMode);
-    this.gameStarted = false;
-    this.players = [
-      { id: 1, name: "Atje" },
-      { id: 2, name: "Otje" }
-    ]
-    this.startPlayer = this.players[0];
   }
 
   addPlayer(name: string) {

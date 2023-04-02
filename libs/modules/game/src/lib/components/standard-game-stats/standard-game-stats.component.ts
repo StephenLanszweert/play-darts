@@ -7,15 +7,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   styleUrls: ['./standard-game-stats.component.scss'],
   templateUrl: './standard-game-stats.component.html',
 })
-export class StandardGameStatsComponent implements OnInit {
-  isMobile!: boolean;
+export class StandardGameStatsComponent {
   latestThrows!: Throw[];
   @Input() darkMode: boolean | null = true;
-  @Input() game!: StandardGame | null;
-
-  constructor(private deviceService: DeviceDetectorService) { }
-
-  ngOnInit(): void {
-    this.isMobile = this.deviceService.isMobile();
-  }
+  @Input() game!: StandardGame;
 }

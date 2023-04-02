@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { CheckoutType, GameType, Player, StandardGame, Set, Leg, Throw, StandardGamePlayer, FinishService, StandardGameOutshotType } from '@playdarts/api/game';
+import { CheckoutType, GameType, Player, StandardGame, Set, Leg, Throw, StandardGamePlayer, FinishService, StandardGameOutshotType, StandardGameService } from '@playdarts/api/game';
 import { getDarkMode } from 'libs/core/src/lib/state/core.selectors';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { BehaviorSubject, map, Observable, of, Subject, switchMap, takeUntil, tap, withLatestFrom } from 'rxjs';
@@ -17,16 +17,17 @@ export class StandardGameComponent implements OnInit, OnDestroy {
   gameStarted!: boolean;
   players!: Player[];
   startPlayer!: Player | null;
-  count = 0;
   showOutshot: boolean = false;
-  outshotNumber = 0;
 
-  game$ = new BehaviorSubject<StandardGame>({} as StandardGame);
+  game$!: Observable<StandardGame>;
   switchPlayer$ = new Subject<void>();
   addScore$ = new Subject<number>();
   undo$ = new Subject<void>();
 
-  constructor(private store: Store, private deviceService: DeviceDetectorService, private finishService: FinishService) { }
+  constructor(
+    private store: Store,
+    private deviceService: DeviceDetectorService,
+    private gameService: StandardGameService) { }
 
   ngOnInit(): void {
     this.players = [
@@ -37,7 +38,8 @@ export class StandardGameComponent implements OnInit, OnDestroy {
     this.darkMode$ = this.store.select(getDarkMode);
     this.startPlayer = this.players[1];
 
-    this.startNewGame();
+    this.game$ = this.gameService.game$;
+    // this.startGame();
 
     this.switchPlayer$.pipe(
       switchMap(() => this.game$),
@@ -58,6 +60,7 @@ export class StandardGameComponent implements OnInit, OnDestroy {
       const remainingScore = game.activePlayer.sets[game.currentSet].legs[game.currentLeg].throws[0]?.remainingScore ?? 501;
       game.activePlayer.sets[game.currentSet].legs[game.currentLeg].throws.unshift({ score, remainingScore: remainingScore - score });
       if (remainingScore < 180) {
+        this.showOutshot = true;
         return;
       }
       game.activePlayer.sets[game.currentSet].legs[game.currentLeg].numberOfDarts += 3;
@@ -74,29 +77,13 @@ export class StandardGameComponent implements OnInit, OnDestroy {
     });
   }
 
-  startNewGame() {
-    const gamePlayers: StandardGamePlayer[] = this.players.map(player => ({
-      id: player.id, player: player, setsWon: 0, sets: [
-        {
-          id: 1, legs: [{
-            id: 1, throws: [], checkout: null, won: false, numberOfDarts: 0
-          } as Leg],
-          legsWon: 0
-        } as Set
-      ]
-    }));
-    this.game$.next(
-      {
-        id: 0,
-        players: gamePlayers,
-        activePlayer: gamePlayers.find(x => x.id === this.startPlayer?.id) ?? gamePlayers[0],
-        checkoutType: CheckoutType.Double,
-        numberOfLegs: 3,
-        currentSet: 0,
-        currentLeg: 0,
-        numberOfSets: 2,
-      });
+  startGame() {
+    this.gameService.startNewGame(this.players, this.startPlayer ?? this.players[0]);
     this.gameStarted = true;
+  }
+
+  stopGame() {
+    this.gameStarted = false;
   }
 
   ngOnDestroy() {

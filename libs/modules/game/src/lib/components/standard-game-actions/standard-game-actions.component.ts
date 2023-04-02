@@ -15,10 +15,11 @@ export class StandardGameActionsComponent implements OnInit {
 
   score: string = ''
 
-  @Input() game!: StandardGame | null;
+  @Input() game!: StandardGame;
   @Input() darkMode: boolean | null = true;
-  @Output() undo: EventEmitter<void> = new EventEmitter<void>();
-  @Output() scoreEntered: EventEmitter<number> = new EventEmitter<number>();
+  @Output() undo = new EventEmitter<void>();
+  @Output() scoreEntered = new EventEmitter<number>();
+  @Output() stopGame = new EventEmitter<void>();
 
   actionNumbers!: number[];
 

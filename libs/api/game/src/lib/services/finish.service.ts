@@ -174,8 +174,8 @@ export class FinishService {
     ];
   }
 
-  getOutshot(number: number): StandardGameOutshot | undefined {
+  getOutshot(number: number): StandardGameOutshot {
     const outshot = this.outshots.find(x => x.number === number);
-    return outshot;
+    return outshot ?? {} as StandardGameOutshot;
   }
 }

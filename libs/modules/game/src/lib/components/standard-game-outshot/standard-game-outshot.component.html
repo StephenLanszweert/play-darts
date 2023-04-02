@@ -1,9 +1,10 @@
 <div class="standard-game-outshot" *ngIf="show">
-  <h1>Outshot</h1>
+  <h1>Outshot (type: {{ outShot.type }})</h1>
   <div>
     <p>How many dart(s) did you use on the double?</p>
   </div>
   <div>
-    <p>How many dart(s) did you use to finish?</p>
+    <!-- <p>How many dart(s) did you use to finish?</p> -->
+    {{ outShot | json }}
   </div>
 </div>

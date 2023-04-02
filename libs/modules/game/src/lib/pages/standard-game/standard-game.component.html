@@ -1,31 +1,33 @@
-<div *ngIf="gameStarted" class="standardgame">
+<div *ngIf="gameStarted && (game$ | async) as game" class="standardgame">
   <div class="counters">
     <playdarts-standard-game-counters
-      [game]="game$ | async"
+      [game]="game"
       [darkMode]="darkMode$ | async"
     ></playdarts-standard-game-counters>
   </div>
   <div *ngIf="!isMobile" class="stats">
     <playdarts-standard-game-stats
-      [game]="game$ | async"
+      [game]="game"
       [darkMode]="darkMode$ | async"
     ></playdarts-standard-game-stats>
   </div>
   <div class="actions">
     <playdarts-standard-game-actions
-      [game]="game$ | async"
+      [game]="game"
       [darkMode]="darkMode$ | async"
       (undo)="undo$.next()"
       (scoreEntered)="addScore$.next($event)"
+      (stopGame)="stopGame()"
     ></playdarts-standard-game-actions>
   </div>
 </div>
 
 <playdarts-standard-game-outshot
   [show]="showOutshot"
+  [outshotNumber]="110"
 ></playdarts-standard-game-outshot>
 
 <playdarts-standard-game-config
   *ngIf="!gameStarted"
-  (startGame)="startNewGame()"
+  (startGame)="startGame()"
 ></playdarts-standard-game-config>
