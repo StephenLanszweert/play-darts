@@ -1,8 +1,4 @@
 .counters {
-  .title {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-  }
   .topnumbers {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -33,15 +29,16 @@
   }
 }
 
-
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 850px) {
   .counters {
     .topnumbers {
+      gap: 1rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
       .topnumber {
         font-size: 1rem;
-        border-left: 3px solid var(--error-color);
         p:first-child {
-          font-size: .7rem;
+          font-size: 0.7rem;
         }
       }
     }

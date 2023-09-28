@@ -1,4 +1,4 @@
-<div class="standard-game-actions" [class.darkMode]="darkMode" *ngIf="game">
+<div class="standard-game-actions" *ngIf="game">
   <div class="top-actions">
     <button class="action" (click)="undo.emit()" [disabled]="!canUndo()">
       <i class="pi pi-undo" style="font-size: 1.7rem"></i>

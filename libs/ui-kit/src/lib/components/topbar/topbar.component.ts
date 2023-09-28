@@ -3,7 +3,10 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Language } from '@playdarts/core';
 import { setDarkMode } from 'libs/core/src/lib/state/core.actions';
-import { getApplicationLanguage, getDarkMode } from 'libs/core/src/lib/state/core.selectors';
+import {
+  getApplicationLanguage,
+  getDarkMode,
+} from 'libs/core/src/lib/state/core.selectors';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { filter, map, Observable, Subject, takeUntil, tap } from 'rxjs';
@@ -15,67 +18,73 @@ import { filter, map, Observable, Subject, takeUntil, tap } from 'rxjs';
 })
 export class TopbarComponent implements OnInit {
   isMobile = false;
-  title = "";
+  title = '';
   destroy$ = new Subject<void>();
-  darkMode!: boolean;
+  darkMode: boolean;
   selectedLanguage$!: Observable<any>;
   languageOptions!: any[];
 
-  @ViewChild("settings") settings!: OverlayPanel;
+  @ViewChild('settings') settings!: OverlayPanel;
 
-  constructor(private store: Store, private router: Router, private deviceService: DeviceDetectorService) { }
+  constructor(
+    private store: Store,
+    private router: Router,
+    private deviceService: DeviceDetectorService
+  ) {}
 
   ngOnInit(): void {
     this.languageOptions = Object.keys(Language)
       .filter((x) => isNaN(Number(x)))
       .map((x: string, index: number) => ({
         value: x,
-        index
+        index,
       }));
 
-    this.store.select(getDarkMode).pipe(
-      takeUntil(this.destroy$)
-    ).subscribe(res => this.darkMode = res);
+    this.store
+      .select(getDarkMode)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((res) => (this.darkMode = res));
 
     this.selectedLanguage$ = this.store.select(getApplicationLanguage).pipe(
-      map(x => { value: x }),
+      map((x) => {
+        value: x;
+      })
     );
 
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    )
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event) => {
         const navEvent = event as NavigationEnd;
-        this.updateTitle(navEvent.urlAfterRedirects)
+        this.updateTitle(navEvent.urlAfterRedirects);
       });
     this.isMobile = this.deviceService.isMobile();
   }
 
   updateTitle(url: string) {
-    const parts = url.split("/");
+    const parts = url.split('/');
 
-    if (parts[1] === "dashboard") {
-      this.title = "Dashboard";
+    if (parts[1] === 'dashboard') {
+      this.title = 'Dashboard';
       return;
     }
 
-    if (parts[1] === "game") {
+    if (parts[1] === 'game') {
       this.title = this.getGameTitle(parts);
       return;
     }
 
-    this.title = "";
+    this.title = '';
   }
 
   getGameTitle(parts: string[]): string {
     if (parts.length === 2) {
-      return "Game";
+      return 'Game';
     }
     switch (parts[2]) {
-      case "standardgame":
-        return "501 game";
+      case 'standardgame':
+        return '501 game';
       default:
-        return "Game";
+        return 'Game';
     }
   }
 

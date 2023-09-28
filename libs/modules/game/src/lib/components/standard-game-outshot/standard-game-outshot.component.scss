@@ -1,0 +1,65 @@
+.standard-game-outshot-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: hsla(240, 6%, 24%, 0.789);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .standard-game-outshot {
+        padding: 2rem;
+        background: var(--sidebar-color);
+        .darts {
+            display: flex;
+            flex-direction: row;
+            margin-top: 1rem;
+            gap: 1rem;
+            align-items: center;
+            justify-content: center;
+            svg-icon {
+                cursor: pointer;
+                &.active * {
+                    fill: var(--dark-purple-color);
+                }
+            }
+        }
+        .finish {
+            margin-top: 2rem;
+        }
+        .actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+    } 
+    &.darkMode {
+        background: hsla(218, 10%, 19%, 0.789);
+        .standard-game-outshot {
+            background: var(--sidebar-color-darkmode);
+            color: white;
+            .darts svg-icon.active * {
+                fill: white;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 850px){
+    .standard-game-outshot-container {
+        left: 0;
+        right: 0;
+        margin: auto;
+        .standard-game-outshot {
+            width: 90%;
+            h2 {
+                font-size: 1rem;
+            }
+            .actions {
+                font-size: .7rem;
+            }
+        }
+    }
+}

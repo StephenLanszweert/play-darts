@@ -9,17 +9,12 @@ import { Observable } from 'rxjs';
   styleUrls: ['./dashboard.component.scss'],
   templateUrl: './dashboard.component.html',
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent {
   basicData: any;
   basicOptions: any;
   mobile: boolean = false;
-  darkMode$!: Observable<boolean>;
 
-  constructor(private router: Router, private store: Store) { }
-
-  ngOnInit(): void {
-    this.darkMode$ = this.store.select(getDarkMode);
-  }
+  constructor(private router: Router, private store: Store) {}
 
   navigateToGame() {
     this.router.navigate(['/game']);

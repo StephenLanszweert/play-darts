@@ -1,4 +1,4 @@
-<div class="topbar" [class.darkMode]="darkMode">
+<div class="topbar">
   <h1>{{ title }}</h1>
   <div class="actions">
     <div class="action">
@@ -17,7 +17,7 @@
 </div>
 
 <p-overlayPanel #settings>
-  <ng-template pTemplate>
+  <ng-template pTemplate="content">
     <div class="settings">
       <h1>Settings</h1>
       <div
@@ -26,13 +26,6 @@
       >
         <p>Language</p>
         {{ selectedLanguage | json }}
-        <!-- <p-dropdown
-          [options]="languageOptions"
-          [ngModel]="selectedLanguage"
-          optionLabel="value"
-          optionValue="value"
-          (onChange)="setLanguage($event)"
-        ></p-dropdown> -->
       </div>
       <div class="setting">
         <p>Dark mode</p>

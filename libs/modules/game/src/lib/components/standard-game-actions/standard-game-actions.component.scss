@@ -2,7 +2,7 @@
   height: 100%;
   display: grid;
   grid-template-rows: 20% 60% 20%;
-  color: var(--black-color);
+  color: var(--text-color);
   .top-actions {
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
@@ -19,84 +19,49 @@
     grid-template-columns: 1fr 2fr 1fr;
   }
   .action {
+    background-color: var(--action-color);
     border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    border: 1px solid white;
+    color: var(--text-color);
+    border: 1px solid var(--action-border-color);
     &.score {
-      background-color: white;
       font-size: 1.7rem;
       outline: none;
+      color: var(--text-color);
       &:hover {
         cursor: initial;
-        color: initial;
-        background-color: white;
+        background-color: var(--action-color);
       }
     }
-    &:hover {
-      color: white;
-      background-color: var(--light-black-color);
+    &:hover,
+    &:active {
+      color: var(--text-color);
+      background: color-mix(in srgb, var(--action-color), #000 15%);
     }
     &:disabled {
       cursor: not-allowed;
-      color: initial;
-      background-color: var(--light-black-color);
-    }
-  }
-
-  &.darkMode {
-    color: white;
-    .action {
-      border: 1px solid var(--dark-color);
-      background: var(--dark-black-color);
-      color: white;
-      outline: none;
-      &.score {
-        background-color: var(--dark-color);
-        &:hover {
-          background-color: var(--dark-color);
-          color: white;
-        }
-      }
-      &:hover {
-        color: white;
-        background-color: var(--light-black-color);
-      }
-      &:disabled {
-        color: var(--light-black-color);
-      }
+      background: color-mix(in srgb, var(--header-bg-color), #000 15%);
     }
   }
 }
 
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 850px) {
   .standard-game-actions {
     height: 85%;
     .top-actions i {
       margin-right: 0;
     }
-    .action {
-      &:hover {
-        background: initial;
-      }
-      &:active {
-        color: white;
-        background-color: var(--light-black-color);
-      }
-    }
-    &.darkMode {
-      .action {
-        &:hover {
-          background: var(--dark-black-color);
-        }
-        &:active {
-          color: white;
-          background-color: var(--light-black-color);
-        }
-      }
-    }
+    // .action {
+    //   &:hover {
+    //     background: initial;
+    //   }
+    //   &:checked {
+    //     color: white;
+    //     background-color: var(--header-bg-color);
+    //   }
+    // }
   }
 }
-

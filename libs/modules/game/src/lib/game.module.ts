@@ -13,9 +13,11 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
 
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { HttpClientModule } from '@angular/common/http';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 @NgModule({
-  imports: [ButtonModule, CommonModule, ConfirmDialogModule, ChartModule, DropdownModule, FormsModule, GameRoutingModule, InputNumberModule, UiKitModule],
+  imports: [HttpClientModule, AngularSvgIconModule.forRoot(), ButtonModule, CommonModule, ConfirmDialogModule, ChartModule, DropdownModule, FormsModule, GameRoutingModule, InputNumberModule, UiKitModule],
   declarations: [fromPages.pages, fromComponents.components],
 })
 export class GameModule { }

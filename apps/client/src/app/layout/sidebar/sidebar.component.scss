@@ -1,11 +1,11 @@
 .sidebar {
   position: relative;
   height: 100%;
-  background: var(--sidebar-color);
-  color: var(--white-color);
+  background: var(--sidebar-bg-color);
+  color: var(--text-color);
   .brand {
-    color: var(--dark-color);
-    background: var(--topbar-color);
+    color: var(--textk-color);
+    background: var(--topbar-bg-color);
     display: flex;
     height: 10%;
     .logo {
@@ -21,52 +21,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-        a {
-          outline: none;
-          color: var(--dark-color);
-          text-decoration: none;
-          display: flex;
-          align-items: center;
-          justify-content: flex-start;
-          margin: 2rem 0;
-          font-size: 1rem;
-          .sidebaricon {
-            width: 1.5rem;
-          }
-          &.active {
-            &::before {
-              content: "";
-              position: absolute;
-              left: -0.5rem;
-              font-weight: bold;
-              display: inline-block;
-              transform: scale(3);
-              width: .5rem;
-              height: .5rem;
-              box-shadow: 0px 0 8px 3px var(--error-color);
-              border-radius: 50%;
-              background: var(--error-color);
-              border: none;
-            }
-          }
-          .sidebaricon * {
-            fill: var(--dark-color);
-          }
+    a {
+      outline: none;
+      color: var(--text-color);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin: 2rem 0;
+      font-size: 1rem;
+      .sidebaricon {
+        width: 1.5rem;
+      }
+      &.active {
+        &::before {
+          content: '';
+          position: absolute;
+          left: -0.5rem;
+          font-weight: bold;
+          display: inline-block;
+          transform: scale(3);
+          width: 0.5rem;
+          height: 0.5rem;
+          box-shadow: 0px 0 8px 3px var(--error-color);
+          border-radius: 50%;
+          background: var(--error-color);
+          border: none;
         }
       }
-  &.darkMode {
-    color: white;
-    background: var(--sidebar-color-darkmode);
-    .brand {
-      color: white;
-      background: var(--topbar-color-darkmode);
-    }
-    nav {
-      a {
-        color: var(--white-color);
-        .sidebaricon * {
-          fill: var(--white-color);
-        }
+      .sidebaricon * {
+        fill: var(--text-color);
       }
     }
   }
@@ -103,8 +87,10 @@
   }
 }
 
-@media only screen and (max-width: 850px){
-  .brand, .logo, .expandedicon {
+@media only screen and (max-width: 850px) {
+  .brand,
+  .logo,
+  .expandedicon {
     display: none;
   }
   :host {
@@ -140,4 +126,3 @@
     }
   }
 }
-

@@ -1,0 +1,20 @@
+.button {
+  background: var(--light-purple-color);
+  border: none;
+  color: white;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  &:enabled:hover {
+    background: var(--dark-purple-color);
+  }
+  &.outline {
+    color: var(--dark-color);
+    background: transparent;
+    border: 1px solid var(--light-purple-color);
+    &:hover {
+      color: white;
+      background: var(--dark-purple-color);
+    }
+  }
+}

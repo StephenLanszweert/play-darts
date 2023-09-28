@@ -1,10 +1,42 @@
-<div class="standard-game-outshot" *ngIf="show">
-  <h1>Outshot (type: {{ outShot.type }})</h1>
-  <div>
-    <p>How many dart(s) did you use on the double?</p>
-  </div>
-  <div>
-    <!-- <p>How many dart(s) did you use to finish?</p> -->
-    {{ outShot | json }}
+<div class="standard-game-outshot-container" *ngIf="show">
+  <div class="standard-game-outshot">
+    <div>
+      <h2>How many dart(s) did you use on the double?</h2>
+      <div
+        class="darts"
+        *ngIf="numberOfDartsToFinish$ | async as numberOfDartsToFinish"
+      >
+        <svg-icon
+          src="assets/dartIcon.svg"
+          (click)="numberOfDartsToFinish$.next(1)"
+          [class.active]="numberOfDartsToFinish === 1"
+          [svgStyle]="{ 'width.px': 90 }"
+        ></svg-icon>
+        <svg-icon
+          *ngIf="outshot.type !== outshotType.ThreeDarts"
+          src="assets/twoDartIcon.svg"
+          (click)="numberOfDartsToFinish$.next(2)"
+          [class.active]="numberOfDartsToFinish === 2"
+          [svgStyle]="{ 'width.px': 90 }"
+        ></svg-icon>
+        <svg-icon
+          *ngIf="
+            outshot.type !== outshotType.TwoDarts &&
+            outshot.type !== outshotType.ThreeDarts
+          "
+          src="assets/threeDartIcon.svg"
+          (click)="numberOfDartsToFinish$.next(3)"
+          [class.active]="numberOfDartsToFinish === 3"
+          [svgStyle]="{ 'width.px': 90 }"
+        ></svg-icon>
+      </div>
+    </div>
+    <div class="actions">
+      <playdarts-button fillMode="outline">0</playdarts-button>
+      <playdarts-button (clicked)="close.emit()" fillMode="outline"
+        >Cancel</playdarts-button
+      >
+      <playdarts-button>Confirm</playdarts-button>
+    </div>
   </div>
 </div>

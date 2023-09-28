@@ -9,6 +9,5 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 })
 export class StandardGameStatsComponent {
   latestThrows!: Throw[];
-  @Input() darkMode: boolean | null = true;
   @Input() game!: StandardGame;
 }

@@ -1,5 +1,5 @@
 .app {
-  height: 100vh;
+  height: 100dvh;
   width: 100vw;
   overflow: hidden;
   display: grid;
@@ -7,17 +7,13 @@
   transition: grid-template-columns 0.5s ease-out;
   -webkit-tap-highlight-color: transparent;
   .content {
-    height: 90vh;
+    height: 90dvh;
+    position: relative;
     overflow-y: auto;
-    background: var(--main-bg-color);
+    background: var(--content-bg-color);
   }
   &.sidebar-expanded {
     grid-template-columns: 15% 1fr;
-  }
-  &.darkMode {
-    .content {
-      background: var(--dark-black-color);
-    }
   }
 }
 
@@ -28,7 +24,7 @@
   grid-template-rows: 10% 90%;
 }
 
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 850px) {
   .app {
     grid-template-columns: 1fr;
     ::-webkit-scrollbar-thumb {

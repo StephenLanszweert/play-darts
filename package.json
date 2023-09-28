@@ -28,6 +28,7 @@
     "@nrwl/angular": "14.8.3",
     "@schematics/angular": "^14.2.7",
     "@types/passport": "^1.0.11",
+    "angular-svg-icon": "^14.0.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
     "chart.js": "^3.9.1",

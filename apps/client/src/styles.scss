@@ -1,34 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;600;700&display=swap');
-@import url('assets/styles/_colors.scss');
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 * {
   margin: 0;
+  --border-radius: 10px;
 }
-html, body {
+html,
+body {
   height: 100%;
   font-family: 'Poppins', sans-serif;
-  color: #5D5D68;
+  color: #5d5d68;
   padding: 0;
   margin: 0;
 }
 body {
+  height: 100%;
   padding: 0;
   margin: 0;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
@@ -37,4 +54,44 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 ::-webkit-scrollbar-thumb {
   background: var(--black-color) !important;
+}
+
+@mixin darken() {
+  --content-bg-color: #232434;
+  --header-bg-color: #2c2f35;
+  --sidebar-bg-color: #373e48;
+  --cta-button-color: #47417b;
+  --cta-darker-button-color: #36325b;
+  --section-bg-color: #3c3c44;
+  --hover-color: #3c3c44;
+  --text-color: #ffffff;
+  --error-color: #f26c6d;
+  --action-color: #2c2f35;
+  --action-border-color: gray;
+}
+
+@mixin lighten() {
+  --content-bg-color: #f4f5f6;
+  --header-bg-color: #dbdde0;
+  --sidebar-bg-color: #dbdde0;
+  --cta-button-color: #5b549c;
+  --cta-darker-button-color: #36325b;
+  --section-bg-color: #ffffff;
+  --hover-color: #9c9da1;
+  --text-color: #5d5d68;
+  --error-color: #f26c6d;
+  --action-color: white;
+  --action-border-color: lightgray;
+}
+
+body.dark {
+  @include darken();
+}
+body.light {
+  @include lighten();
+}
+
+.title {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
 }

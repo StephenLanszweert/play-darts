@@ -82,7 +82,7 @@ export class FinishService {
       { "number": 93, "outshot": "T19 D18", "type": 1 },
       { "number": 92, "outshot": "T20 D16", "type": 1 },
       { "number": 91, "outshot": "T17 D20", "type": 1 },
-      { "number": 91, "outshot": "T17 D20", "type": 1 },
+      { "number": 90, "outshot": "T20 D10", "type": 1 },
       { "number": 89, "outshot": "T19 D16", "type": 1 },
       { "number": 88, "outshot": "T16 D20", "type": 1 },
       { "number": 87, "outshot": "T17 D18", "type": 1 },

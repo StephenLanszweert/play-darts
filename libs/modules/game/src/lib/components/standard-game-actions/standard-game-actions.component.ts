@@ -1,9 +1,23 @@
-import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Player, StandardGame } from '@playdarts/api/game';
 import { Game } from 'libs/api/game/src/lib/models/game.model';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Observable } from 'rxjs';
+
+import { InjectionToken } from '@angular/core';
+
+export const WINDOW = new InjectionToken<Window>('Global window object', {
+  factory: () => window,
+});
 
 @Component({
   selector: 'playdarts-standard-game-actions',
@@ -13,10 +27,9 @@ import { Observable } from 'rxjs';
 export class StandardGameActionsComponent implements OnInit {
   isMobile!: boolean;
 
-  score: string = ''
+  score: string = '';
 
   @Input() game!: StandardGame;
-  @Input() darkMode: boolean | null = true;
   @Output() undo = new EventEmitter<void>();
   @Output() scoreEntered = new EventEmitter<number>();
   @Output() stopGame = new EventEmitter<void>();
@@ -33,6 +46,7 @@ export class StandardGameActionsComponent implements OnInit {
 
     if (event.key === 'Backspace' && this.score !== '') {
       this.score = this.score.slice(0, -1);
+      this.window.navigator.vibrate(50);
     }
 
     if (event.key === 'Enter') {
@@ -41,7 +55,10 @@ export class StandardGameActionsComponent implements OnInit {
     }
   }
 
-  constructor(private deviceService: DeviceDetectorService) { }
+  constructor(
+    private deviceService: DeviceDetectorService,
+    @Inject(WINDOW) private window: Window
+  ) {}
 
   ngOnInit(): void {
     this.isMobile = this.deviceService.isMobile();
@@ -50,28 +67,42 @@ export class StandardGameActionsComponent implements OnInit {
 
   inputNumber(number: number) {
     const newScore = parseInt(this.score + '' + number);
-    const remainingScoreActivePlayer = this.game?.activePlayer.sets[this.game.currentSet].legs[this.game.currentLeg].throws[0]?.remainingScore ?? 501;
-    if (this.score.length === 3 || newScore > 180 || (remainingScoreActivePlayer - newScore < 0)) return;
+    const remainingScoreActivePlayer =
+      this.game?.activePlayer.sets[this.game.currentSet].legs[
+        this.game.currentLeg
+      ].throws[0]?.remainingScore ?? 501;
+    if (
+      this.score.length === 3 ||
+      newScore > 180 ||
+      remainingScoreActivePlayer - newScore < 0
+    )
+      return;
     if (number > 9) {
       if (this.score !== '') return;
       this.score = '' + number;
       this.enterScore();
       return;
     }
+    this.window.navigator.vibrate(50);
     this.score = `${newScore}`;
   }
 
   canUndo(): boolean {
     if (!this.game) return false;
 
-    return this.game?.players.some(player => player.sets[this.game?.currentSet ?? 0].legs[this.game?.currentLeg ?? 0].throws
-      .length > 0);
+    return this.game?.players.some(
+      (player) =>
+        player.sets[this.game?.currentSet ?? 0].legs[this.game?.currentLeg ?? 0]
+          .throws.length > 0
+    );
   }
 
   enterScore() {
     const scoreNumber = parseInt(this.score);
+    console.log(scoreNumber);
     if (scoreNumber > 180) return;
     this.scoreEntered.emit(scoreNumber);
     this.score = '';
+    this.window.navigator.vibrate(50);
   }
 }

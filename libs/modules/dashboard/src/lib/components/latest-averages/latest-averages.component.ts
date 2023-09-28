@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -11,23 +18,27 @@ import { getDarkMode } from 'libs/core/src/lib/state/core.selectors';
   templateUrl: './latest-averages.component.html',
   styleUrls: ['./latest-averages.component.scss'],
 })
-export class LatestAveragesComponent implements OnInit {
+export class LatestAveragesComponent implements OnInit, OnDestroy {
   isMobile: boolean = false;
   basicData: any;
   basicOptions: any;
   darkMode!: boolean;
   destroy$ = new Subject<void>();
 
-  constructor(private store: Store, private deviceService: DeviceDetectorService) { }
+  constructor(
+    private store: Store,
+    private deviceService: DeviceDetectorService
+  ) {}
 
   ngOnInit(): void {
     this.isMobile = this.deviceService.isMobile();
-    this.store.select(getDarkMode).pipe(
-      takeUntil(this.destroy$)
-    ).subscribe(val => {
-      this.darkMode = val;
-      this.updateChartOptions();
-    });
+    this.store
+      .select(getDarkMode)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((val) => {
+        this.darkMode = val;
+        this.updateChartOptions();
+      });
 
     Chart.register(ChartDataLabels);
     this.basicData = {
@@ -35,12 +46,12 @@ export class LatestAveragesComponent implements OnInit {
       datasets: [
         {
           label: 'Avg',
-          data: [65.23, 59.25, 80.00, 81.15, 56.45],
+          data: [65.23, 59.25, 80.0, 81.15, 56.45],
           fill: false,
           borderColor: '#F26C6D',
-          tension: .4
-        }
-      ]
+          tension: 0.4,
+        },
+      ],
     };
   }
 
@@ -48,8 +59,8 @@ export class LatestAveragesComponent implements OnInit {
     this.basicOptions = {
       defaults: {
         font: {
-          family: "'Poppins', sans-serif"
-        }
+          family: "'Poppins', sans-serif",
+        },
       },
       responsive: true,
       plugins: {
@@ -58,41 +69,41 @@ export class LatestAveragesComponent implements OnInit {
           borderRadius: 20,
           color: this.darkMode ? 'white' : '#050A0C',
           font: {
-            weight: 'bold'
+            weight: 'bold',
           },
-          padding: 6
+          padding: 6,
         },
         legend: {
           display: false,
           labels: {
-            color: '#495057'
-          }
+            color: '#495057',
+          },
         },
         tooltip: {
-          enabled: false
+          enabled: false,
         },
         point: {
-          pointStyle: 'cross'
-        }
+          pointStyle: 'cross',
+        },
       },
       scales: {
         x: {
           ticks: {
-            color: this.darkMode ? '#FFFFFF' : '#495057'
+            color: this.darkMode ? '#FFFFFF' : '#495057',
           },
           grid: {
-            color: '#ebedef'
-          }
+            color: '#ebedef',
+          },
         },
         y: {
           ticks: {
-            color: this.darkMode ? '#FFFFFF' : '#495057'
+            color: this.darkMode ? '#FFFFFF' : '#495057',
           },
           grid: {
-            color: '#ebedef'
-          }
-        }
-      }
+            color: '#ebedef',
+          },
+        },
+      },
     };
   }
 

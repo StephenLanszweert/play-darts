@@ -11,26 +11,59 @@ import { Observable } from 'rxjs';
   templateUrl: './games-overview.component.html',
 })
 export class GamesOverviewComponent implements OnInit {
-  darkMode$!: Observable<boolean>;
-
   gameTypes!: GameType[];
 
-  constructor(private store: Store, private router: Router) { }
+  constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
-    this.darkMode$ = this.store.select(getDarkMode);
     this.gameTypes = [
-      { id: 1, name: "501", favorite: true, currentlyPlaying: false, route: "standardgame" },
-      { id: 2, name: "Scoring", favorite: false, currentlyPlaying: false, route: "standardgame" },
-      { id: 3, name: "Round the world", favorite: true, currentlyPlaying: false, route: "standardgame" },
-      { id: 4, name: "Scoring sheet", favorite: false, currentlyPlaying: false, route: "standardgame" },
-      { id: 5, name: "Bob's 27", favorite: false, currentlyPlaying: false, route: "standardgame" },
-      { id: 6, name: "121 checkout", favorite: false, currentlyPlaying: false, route: "standardgame" },
-    ]
+      {
+        id: 1,
+        name: '501',
+        favorite: true,
+        currentlyPlaying: false,
+        route: 'standardgame',
+      },
+      {
+        id: 2,
+        name: 'Scoring',
+        favorite: false,
+        currentlyPlaying: false,
+        route: 'standardgame',
+      },
+      {
+        id: 3,
+        name: 'Round the world',
+        favorite: true,
+        currentlyPlaying: false,
+        route: 'standardgame',
+      },
+      {
+        id: 4,
+        name: 'Scoring sheet',
+        favorite: false,
+        currentlyPlaying: false,
+        route: 'standardgame',
+      },
+      {
+        id: 5,
+        name: "Bob's 27",
+        favorite: false,
+        currentlyPlaying: false,
+        route: 'standardgame',
+      },
+      {
+        id: 6,
+        name: '121 checkout',
+        favorite: false,
+        currentlyPlaying: false,
+        route: 'standardgame',
+      },
+    ];
   }
 
   toggleFavorite(id: number) {
-    const gameType = this.gameTypes.find(x => x.id == id);
+    const gameType = this.gameTypes.find((x) => x.id == id);
     if (gameType != null) {
       gameType.favorite = !!gameType?.favorite ? false : true;
     }

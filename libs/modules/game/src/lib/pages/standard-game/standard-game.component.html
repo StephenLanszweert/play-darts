@@ -2,19 +2,16 @@
   <div class="counters">
     <playdarts-standard-game-counters
       [game]="game"
-      [darkMode]="darkMode$ | async"
     ></playdarts-standard-game-counters>
   </div>
   <div *ngIf="!isMobile" class="stats">
     <playdarts-standard-game-stats
       [game]="game"
-      [darkMode]="darkMode$ | async"
     ></playdarts-standard-game-stats>
   </div>
   <div class="actions">
     <playdarts-standard-game-actions
       [game]="game"
-      [darkMode]="darkMode$ | async"
       (undo)="undo$.next()"
       (scoreEntered)="addScore$.next($event)"
       (stopGame)="stopGame()"
@@ -24,7 +21,8 @@
 
 <playdarts-standard-game-outshot
   [show]="showOutshot"
-  [outshotNumber]="110"
+  [outshotNumber]="outshotNumber"
+  (close)="showOutshot = false"
 ></playdarts-standard-game-outshot>
 
 <playdarts-standard-game-config

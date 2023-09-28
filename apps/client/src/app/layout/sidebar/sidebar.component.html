@@ -1,10 +1,6 @@
-<div class="sidebar" [class.expanded]="expanded" [class.darkMode]="darkMode">
+<div class="sidebar" [class.expanded]="expanded">
   <div class="brand">
-    <img
-      class="logo"
-      [src]="darkMode ? 'assets/logo_white.svg' : 'assets/logo.svg'"
-      alt="logo"
-    />
+    <img class="logo" [src]="'assets/logo.svg'" alt="logo" />
   </div>
   <nav>
     <a routerLink="/dashboard" routerLinkActive="active">

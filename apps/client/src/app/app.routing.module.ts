@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent, NotAuthorizedComponent } from 'libs/ui-kit/src/lib/components';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { HttpClientModule } from '@angular/common/http';
 
 export const APP_ROUTES: Routes = [
   {
@@ -28,6 +30,8 @@ export const APP_ROUTES: Routes = [
       initialNavigation: 'enabledBlocking',
       paramsInheritanceStrategy: 'always',
     }),
+    HttpClientModule,
+    AngularSvgIconModule.forRoot()
   ],
   exports: [RouterModule],
 })

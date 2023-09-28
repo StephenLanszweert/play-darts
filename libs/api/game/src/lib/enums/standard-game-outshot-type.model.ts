@@ -1,5 +1,5 @@
 export enum StandardGameOutshotType {
-  OneDart,
-  TwoDarts,
-  ThreeDarts,
+  OneDart = 0,
+  TwoDarts = 1,
+  ThreeDarts = 2,
 }

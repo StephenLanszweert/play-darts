@@ -6,7 +6,6 @@
   <playdarts-sidebar
     (onExpanded)="sidebarExpanded$.next($event)"
     [expanded]="(sidebarExpanded$ | async) === true"
-    [darkMode]="darkMode$ | async"
   ></playdarts-sidebar>
   <div id="page" class="container container-fluid container-full">
     <div id="main">

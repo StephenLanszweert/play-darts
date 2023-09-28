@@ -5,7 +5,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 8px;
-  background: var(--topbar-color);
+  background: var(--header-bg-color);
+  color: var(--text-color);
   h1 {
     font-size: 1.2rem;
   }
@@ -14,31 +15,40 @@
     .action {
       cursor: pointer;
       margin: 0 1rem;
-      color: var(--black-color);
       font-size: 1.2rem;
     }
   }
-  &.darkMode {
-    background: var(--topbar-color-darkmode);
-    color: white;
-    .actions .action {
-      color: white;
-    }
-  }
+}
+
+::ng-deep .p-overlaypanel {
+  background: var(--sidebar-bg-color);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  margin-top: 1rem !important;
+}
+
+::ng-deep .p-overlaypanel:after {
+  left: initial !important;
+  right: 0 !important;
+  border-bottom-color: var(--text-color);
+}
+
+::ng-deep .p-overlaypanel::before {
+  display: none;
 }
 
 .settings {
   h1 {
     font-size: 1.2rem;
-    border-bottom: 1px solid var(--black-color);
-    padding-bottom: .5rem;
-    margin-bottom: .5rem;
+    border-bottom: 1px solid var(--text-color);
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
   }
   .setting {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     p {
       font-size: 1rem;
       margin-right: 1rem;
@@ -46,11 +56,11 @@
   }
 }
 
-@media only screen and (max-width: 850px){
+@media only screen and (max-width: 850px) {
   .topbar {
     .actions {
       .action {
-        margin: 0 .5rem;
+        margin: 0 0.5rem;
       }
     }
   }

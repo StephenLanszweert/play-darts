@@ -9,10 +9,9 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 export class SidebarComponent implements OnInit {
   isMobile: boolean = false;
   @Input() expanded = true;
-  @Input() darkMode: boolean | null = true;
   @Output() onExpanded: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  constructor(private deviceService: DeviceDetectorService) { }
+  constructor(private deviceService: DeviceDetectorService) {}
 
   ngOnInit(): void {
     this.isMobile = this.deviceService.isMobile();

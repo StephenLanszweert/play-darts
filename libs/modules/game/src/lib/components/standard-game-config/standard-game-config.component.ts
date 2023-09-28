@@ -16,7 +16,7 @@ export class StandardGameConfigComponent implements OnInit {
 
   @Output() startGame = new EventEmitter<void>();
 
-  constructor(private store: Store) { }
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
     this.darkMode$ = this.store.select(getDarkMode);
@@ -27,7 +27,7 @@ export class StandardGameConfigComponent implements OnInit {
   }
 
   removePlayer(id: number) {
-    this.players = this.players.filter(x => x.id !== id);
+    this.players = this.players.filter((x) => x.id !== id);
     if (this.startPlayer?.id === id) {
       this.startPlayer = this.players.length > 0 ? this.players[0] : null;
     }
